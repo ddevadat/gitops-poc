@@ -5,4 +5,6 @@ chaos-mesh:
   chaosDaemon:
     runtime: crio
     socketPath: /var/run/crio/crio.sock
-    
+  dashboard:
+    service:
+      type: clusterIP 
