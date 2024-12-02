@@ -55,12 +55,12 @@ external:
         argocd.argoproj.io/sync-wave: "-99"
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: chaos-mesh
-    #   path: workload/mosip/external-modules/chaos-mesh
-    #   namespace: chaos-mesh
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-99"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: chaos-mesh
+      path: workload/mosip/external-modules/chaos-mesh
+      namespace: chaos-mesh
+      annotations:
+        argocd.argoproj.io/sync-wave: "-99"
+        argocd.argoproj.io/manifest-generate-paths: .
 
 
     # - name: cloudnative-pg
