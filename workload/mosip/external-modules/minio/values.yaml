@@ -6,7 +6,9 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 
 minio: 
   global:
-    storageClass: "longhorn"
+    storageClass: "ceph-block"
   auth:
     rootUser: admin
     rootPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
+  persistence:
+    size: 70Gi
