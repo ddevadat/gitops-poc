@@ -7,4 +7,4 @@ chaos-mesh:
     socketPath: /var/run/crio/crio.sock
   dashboard:
     service:
-      type: clusterIP 
+      type: ClusterIP 
