@@ -14,5 +14,6 @@ minio:
     size: 70Gi
 
   metrics:
+    enabled: true
     serviceMonitor:
       enabled: true
