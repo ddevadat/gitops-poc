@@ -21,4 +21,26 @@ spec:
         set:
           x-forwarded-proto: https
 
+--- 
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: prometheus-ui
+spec:
+  hosts:
+  - "{{ .Values.prometheus_domain }}"
+  gateways:
+    - istio-system/all-hosts
+  http:
+  - route:
+    - destination:
+        host: monitoring-stack-kube-prom-prometheus
+        port:
+          number: 9090
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
+
 {{- end }}

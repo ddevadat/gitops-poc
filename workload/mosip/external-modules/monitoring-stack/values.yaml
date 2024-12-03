@@ -1,5 +1,6 @@
 monitoring_stack_istio_enabled: true
 grafana_domain: grafana.<path:ocivault#mosip_domain#latest | base64decode>
+prometheus_domain: prom.<path:ocivault#mosip_domain#latest | base64decode>
 
 kube-prometheus-stack:
   grafana:
