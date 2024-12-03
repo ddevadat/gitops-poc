@@ -111,21 +111,21 @@ external:
     #   annotations:
     #     argocd.argoproj.io/manifest-generate-paths: .
 
-    - name: minio
-      path: workload/mosip/external-modules/minio
-      namespace: minio
-      namespace_labels:
-        istio_injection_label: disabled
-      annotations:
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: minio
+    #   path: workload/mosip/external-modules/minio
+    #   namespace: minio
+    #   namespace_labels:
+    #     istio_injection_label: disabled
+    #   annotations:
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
-    - name: minio-upload
-      path: workload/mosip/external-modules/minio-upload
-      namespace: minio
-      namespace_labels:
-        istio_injection_label: disabled
-      annotations:
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: minio-upload
+    #   path: workload/mosip/external-modules/minio-upload
+    #   namespace: minio
+    #   namespace_labels:
+    #     istio_injection_label: disabled
+    #   annotations:
+    #     argocd.argoproj.io/manifest-generate-paths: .
   
 
     # - name: clamav
