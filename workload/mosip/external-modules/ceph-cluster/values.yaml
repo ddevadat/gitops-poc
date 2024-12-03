@@ -17,7 +17,7 @@ rook-ceph-cluster:
     dashboard:
       enabled: true
       ssl: false
-      prometheusEndpoint: http://monitoring-stack-kube-prom-prometheus:9090
+      prometheusEndpoint: http://monitoring-stack-kube-prom-prometheus.monitoring-stack:9090
       prometheusEndpointSSLVerify: false
     mgr:
       # When higher availability of the mgr is needed, increase the count to 2.
