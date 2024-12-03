@@ -1,5 +1,5 @@
 ceph_istio_enabled: true
-prometheus_enabled: false
+prometheus_enabled: true
 ceph_domain: ceph.<path:ocivault#mosip_domain#latest | base64decode>
 
 rook-ceph-cluster:

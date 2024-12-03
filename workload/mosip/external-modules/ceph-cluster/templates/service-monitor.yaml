@@ -7,8 +7,6 @@ metadata:
   namespace: rook-ceph # namespace:cluster
   labels:
     team: rook
-  annotations:
-    argocd.argoproj.io/hook: PostSync
 spec:
   namespaceSelector:
     matchNames:
