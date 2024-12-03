@@ -18,3 +18,36 @@ minio:
     enabled: true
     serviceMonitor:
       enabled: true
+
+  buckets:
+    - name: demo-bucket
+      region: us-east-1
+      # Only when mode is 'distributed'
+      # Allowed values: "Versioned" | "Suspended" | "Unchanged"
+      # Defaults to "Suspended" if not specified.
+      # For compatibility, accepts boolean values as well, where true maps
+      # to "Versioned" and false to "Suspended".
+      # ref: https://docs.minio.io/docs/distributed-minio-quickstart-guide
+      versioning: Suspended
+      # Versioning is automatically enabled if withLock is true
+      # ref: https://docs.min.io/docs/minio-bucket-versioning-guide.html
+      withLock: false
+      # Only when mode is 'distributed'
+      # ref: https://docs.minio.io/docs/distributed-minio-quickstart-guide
+      lifecycle:
+        - id: TestPrefix7dRetention
+          prefix: test-prefix
+          disabled: false
+          expiry:
+            days: 7
+            # Days !OR! date
+            # date: "2021-11-11T00:00:00Z"
+            nonconcurrentDays: 3
+      # Only when mode is 'distributed'
+      # ref: https://docs.minio.io/docs/distributed-minio-quickstart-guide
+      quota:
+        # set (hard still works as an alias but is deprecated) or clear(+ omit size)
+        type: set
+        size: 10GiB
+      tags:
+        name: demo-bucket
