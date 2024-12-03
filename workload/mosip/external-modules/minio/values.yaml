@@ -48,7 +48,6 @@ minio:
         # ref: https://docs.minio.io/docs/distributed-minio-quickstart-guide
         quota:
           # set (hard still works as an alias but is deprecated) or clear(+ omit size)
-          type: set
-          size: 10GiB
+          type: clear
         tags:
           name: test-bucket
