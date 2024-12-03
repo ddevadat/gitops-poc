@@ -1,5 +1,6 @@
-chao_mesh_istio_enabled: true
-chao_mesh_domain: chaosmesh.<path:ocivault#mosip_domain#latest | base64decode>
+monitoring_stack_istio_enabled: true
+grafana_domain: grafana.<path:ocivault#mosip_domain#latest | base64decode>
 
 kube-prometheus-stack:
-  fullnameOverride: "monitoring"
+  grafana:
+    adminPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
