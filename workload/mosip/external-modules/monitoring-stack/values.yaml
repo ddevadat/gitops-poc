@@ -5,6 +5,6 @@ prometheus_domain: prom.<path:ocivault#mosip_domain#latest | base64decode>
 kube-prometheus-stack:
   prometheus:
     prometheusSpec:
-    serviceMonitorSelectorNilUsesHelmValues: false
+      serviceMonitorSelectorNilUsesHelmValues: false
   grafana:
     adminPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
