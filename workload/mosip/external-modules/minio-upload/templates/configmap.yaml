@@ -6,4 +6,4 @@ data:
   MINIO_ALIAS: {{ .Values.minio.alias }}
   MINIO_URL: {{ .Values.minio.url }}
   BUCKET: {{ .Values.minio.bucket }}
-  UPLOAD_INTERVAL: {{ .Values.minio.upload_interval }}
+  UPLOAD_INTERVAL: {{ .Values.minio.upload_interval | quote }}
