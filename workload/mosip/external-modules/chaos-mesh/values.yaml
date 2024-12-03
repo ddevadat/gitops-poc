@@ -5,6 +5,10 @@ chaos-mesh:
   chaosDaemon:
     runtime: crio
     socketPath: /var/run/crio/crio.sock
+    tolerations: 
+    - key: "node-role.kubernetes.io/rook-node"
+      operator: "Exists"
+      effect: "NoSchedule"
   dashboard:
     service:
       type: ClusterIP 
