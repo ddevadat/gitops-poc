@@ -1,10 +1,5 @@
 chao_mesh_istio_enabled: true
 chao_mesh_domain: chaosmesh.<path:ocivault#mosip_domain#latest | base64decode>
 
-chaos-mesh:
-  chaosDaemon:
-    runtime: crio
-    socketPath: /var/run/crio/crio.sock
-  dashboard:
-    service:
-      type: ClusterIP 
+kube-prometheus-stack:
+  fullnameOverride: "monitoring"
