@@ -1,0 +1,50 @@
+{{- if .Values.prometheus_enabled }}
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: rook-ceph-mgr
+  namespace: rook-ceph # namespace:cluster
+  labels:
+    team: rook
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  namespaceSelector:
+    matchNames:
+      - rook-ceph
+  selector:
+    matchLabels:
+      app: rook-ceph-mgr
+      rook_cluster: rook-ceph # namespace:cluster
+  endpoints:
+    - port: http-metrics
+      path: /metrics
+      interval: 10s
+      honorLabels: true
+
+--- 
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: rook-ceph-exporter
+  namespace: rook-ceph # namespace:cluster
+  labels:
+    team: rook
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  namespaceSelector:
+    matchNames:
+      - rook-ceph
+  selector:
+    matchLabels:
+      app: rook-ceph-exporter
+      rook_cluster: rook-ceph # namespace:cluster
+  endpoints:
+    - port: ceph-exporter-http-metrics
+      path: /metrics
+      interval: 10s
+
+{{- end }}
