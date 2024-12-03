@@ -12,7 +12,7 @@ minio:
     rootPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
   persistence:
     size: 70Gi
-  defaultBuckets: "test-bucket"
+  # defaultBuckets: "test-bucket"
 
   metrics:
     enabled: true
@@ -20,7 +20,7 @@ minio:
       enabled: true
 
   buckets:
-    - name: demo-bucket
+    - name: test-bucket
       region: us-east-1
       # Only when mode is 'distributed'
       # Allowed values: "Versioned" | "Suspended" | "Unchanged"
@@ -50,4 +50,4 @@ minio:
         type: set
         size: 10GiB
       tags:
-        name: demo-bucket
+        name: test-bucket
