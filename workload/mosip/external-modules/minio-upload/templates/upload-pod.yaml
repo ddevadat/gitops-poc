@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: minio-uploader
+spec:
+  imagePullSecrets:
+    - name: {{ .Values.initcontainer.imagepullsecret }}
+  containers:
+    - name: minio-uploader
+      image: {{ .Values.initcontainer.upload_image | default "curlimages/curl:latest" }}
+      imagePullPolicy: Always
+      env:
+        - name: MINIO_ALIAS
+          valueFrom:
+            configMapKeyRef:
+              name: minio-config
+              key: MINIO_ALIAS
+        - name: MINIO_URL
+          valueFrom:
+            configMapKeyRef:
+              name: minio-config
+              key: MINIO_URL
+        - name: BUCKET
+          valueFrom:
+            configMapKeyRef:
+              name: minio-config
+              key: BUCKET
+        - name: UPLOAD_INTERVAL
+          valueFrom:
+            configMapKeyRef:
+              name: minio-config
+              key: UPLOAD_INTERVAL
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: access-key                 
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: secret-key   
+      volumeMounts:
+        - name: temp-storage
+          mountPath: /tmp
+  volumes:
+    - name: temp-storage
+      emptyDir: {}

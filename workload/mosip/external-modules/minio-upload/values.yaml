@@ -1,0 +1,13 @@
+minio: 
+  alias: myminio
+  url: http://minio:9000
+  bucket: test-bucket
+  upload_interval: 300
+  auth:
+    rootUser: admin
+    rootPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
+
+initcontainer:
+  upload_image: <path:ocivault#minio_upload_image#latest | base64decode> 
+  imagepullsecret: "ocir"
+  registrycred: <path:ocivault#mosip_ocir_secret#latest> 
