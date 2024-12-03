@@ -29,4 +29,4 @@ dependencies:
 
 - name: minio
   version: 14.8.5
-  repository: oci://registry-1.docker.io/bitnamicharts/minio
+  repository: https://charts.bitnami.com/bitnami
