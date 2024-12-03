@@ -28,8 +28,6 @@ rook-ceph-cluster:
       modules:
         - name: rook
           enabled: true
-        - name: nfs
-          enabled: false
     placement:
       all:
         nodeAffinity:
