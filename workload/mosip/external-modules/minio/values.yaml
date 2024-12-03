@@ -12,6 +12,7 @@ minio:
     rootPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
   persistence:
     size: 70Gi
+  defaultBuckets: "test-bucket"
 
   metrics:
     enabled: true
