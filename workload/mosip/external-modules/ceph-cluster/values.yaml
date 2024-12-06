@@ -7,12 +7,12 @@ rook-ceph-cluster:
     createPrometheusRules: true
   toolbox:
     enabled: true
-    tolerations: 
-    - key: "node-role.kubernetes.io/rook-node"
-      operator: "Exists"
-      effect: "NoSchedule"
-    affinity: 
-      oke.oraclecloud.com/pool.name: rook
+    # tolerations: 
+    # - key: "node-role.kubernetes.io/rook-node"
+    #   operator: "Exists"
+    #   effect: "NoSchedule"
+    # affinity: 
+    #   oke.oraclecloud.com/pool.name: rook
   cephClusterSpec:
     removeOSDsIfOutAndSafeToRemove: true
     cleanupPolicy:
