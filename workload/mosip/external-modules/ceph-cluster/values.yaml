@@ -14,6 +14,7 @@ rook-ceph-cluster:
     affinity: 
       oke.oraclecloud.com/pool.name: rook
   cephClusterSpec:
+    removeOSDsIfOutAndSafeToRemove: true
     dashboard:
       enabled: true
       ssl: false
