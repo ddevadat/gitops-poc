@@ -46,8 +46,8 @@ rook-ceph-cluster:
                   operator: In
                   values:
                   - rook
-        podAffinity:
-          oke.oraclecloud.com/pool.name: rook
+        # podAffinity:
+        #   oke.oraclecloud.com/pool.name: rook
         tolerations:
         - key: "node-role.kubernetes.io/rook-node"
           operator: "Exists"
