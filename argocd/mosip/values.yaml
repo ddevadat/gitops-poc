@@ -49,12 +49,12 @@ external:
     #     argocd.argoproj.io/manifest-generate-paths: .
 
 
-    - name: rook-operator
-      path: workload/mosip/external-modules/rook-operator
-      namespace: rook-ceph
-      annotations:
-        argocd.argoproj.io/sync-wave: "-99"
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: rook-operator
+    #   path: workload/mosip/external-modules/rook-operator
+    #   namespace: rook-ceph
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "-99"
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
 
     # - name: ceph-cluster
