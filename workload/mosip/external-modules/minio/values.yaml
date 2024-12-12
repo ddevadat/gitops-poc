@@ -19,6 +19,9 @@ minio:
     enabled: true
     serviceMonitor:
       enabled: true
+  resources:
+    requests:
+      cpu: "125m"
   provisioning:
     enabled: true
     nodeSelector: 
