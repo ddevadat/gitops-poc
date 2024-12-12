@@ -8,3 +8,8 @@ kube-prometheus-stack:
       serviceMonitorSelectorNilUsesHelmValues: false
   grafana:
     adminPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
+    dashboards: 
+        ceph-cluster:
+          gnetId: 2842
+          revision: 18
+          datasource: Prometheus
