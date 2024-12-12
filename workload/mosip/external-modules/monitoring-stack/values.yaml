@@ -8,6 +8,20 @@ kube-prometheus-stack:
       serviceMonitorSelectorNilUsesHelmValues: false
   grafana:
     adminPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
+    datasources: 
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+        - name: Oracle Cloud Infrastructure Metrics
+          type: oci-metrics-datasource
+          access: proxy
+          disableDeletion: true
+          editable: true
+          jsonData:
+            tenancyOCID: <path:ocivault#tenancy_id#latest | base64decode>
+            defaultRegion: <path:ocivault#oci_region#latest | base64decode>
+            environment: "OCI Instance"
+
     dashboards: 
       default:
         ceph-cluster:
