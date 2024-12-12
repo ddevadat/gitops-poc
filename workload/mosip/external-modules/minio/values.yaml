@@ -11,15 +11,18 @@ minio:
     rootUser: admin
     rootPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
   persistence:
-    size: 70Gi
+    size: 10Gi
   # defaultBuckets: "test-bucket"
-
+  nodeSelector: 
+    "project": "tally"
   metrics:
     enabled: true
     serviceMonitor:
       enabled: true
   provisioning:
     enabled: true
+    nodeSelector: 
+      "project": "tally"
     buckets:
       - name: test-bucket
         region: us-east-1
