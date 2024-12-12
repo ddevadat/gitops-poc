@@ -14,6 +14,14 @@ kube-prometheus-stack:
           gnetId: 2842
           revision: 18
           datasource: Prometheus
+        ceph-osd-single:
+          gnetId: 5336
+          revision: 9
+          datasource: Prometheus
+        ceph-pools:
+          gnetId: 5342
+          revision: 9
+          datasource: Prometheus
     dashboardProviders:
        dashboardproviders.yaml:
          apiVersion: 1
