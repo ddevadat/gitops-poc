@@ -2,7 +2,7 @@ minio:
   alias: myminio
   url: http://minio:9000
   bucket: test-bucket
-  upload_interval: 300
+  upload_interval: 60
   auth:
     rootUser: admin
     rootPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
