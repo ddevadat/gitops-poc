@@ -36,14 +36,6 @@ kube-prometheus-stack:
           gnetId: 5342
           revision: 9
           datasource: Prometheus
-        oci-compute:
-          gnetId: 13596
-          revision: 1
-          datasource: Oracle Cloud Infrastructure Metrics
-        oci-oke:
-          gnetId: 13594
-          revision: 1
-          datasource: Oracle Cloud Infrastructure Metrics
     dashboardProviders:
        dashboardproviders.yaml:
          apiVersion: 1
