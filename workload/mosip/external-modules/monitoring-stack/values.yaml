@@ -36,10 +36,10 @@ kube-prometheus-stack:
           gnetId: 5342
           revision: 9
           datasource: Prometheus
-        minio:
-          gnetId: 13502
-          revision: 26
-          datasource: Prometheus
+        # minio:
+        #   gnetId: 13502
+        #   revision: 26
+        #   datasource: Prometheus
     dashboardProviders:
        dashboardproviders.yaml:
          apiVersion: 1
