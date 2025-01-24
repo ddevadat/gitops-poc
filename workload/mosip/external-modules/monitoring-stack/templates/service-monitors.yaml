@@ -4,6 +4,7 @@ metadata:
   name: argocd-metrics
   labels:
     release: monitoring-stack
+  namespace: argocd
   annotations:
     argocd.argoproj.io/hook: PostSync
     
@@ -20,6 +21,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-server-metrics
+  namespace: argocd
   labels:
     release: monitoring-stack
   annotations:
@@ -38,6 +40,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-repo-server-metrics
+  namespace: argocd
   labels:
     release: monitoring-stack
   annotations:
@@ -56,6 +59,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-applicationset-controller-metrics
+  namespace: argocd
   labels:
     release: monitoring-stack
   annotations:
@@ -73,6 +77,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-dex-server
+  namespace: argocd
   labels:
     release: monitoring-stack
   annotations:
@@ -91,6 +96,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-redis-haproxy-metrics
+  namespace: argocd
   labels:
     release: monitoring-stack
   annotations:
@@ -109,6 +115,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-notifications-controller
+  namespace: argocd
   labels:
     release: monitoring-stack
   annotations:
