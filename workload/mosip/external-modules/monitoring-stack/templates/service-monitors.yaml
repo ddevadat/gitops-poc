@@ -6,7 +6,7 @@ metadata:
     release: monitoring-stack
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    
 spec:
   selector:
     matchLabels:
@@ -24,7 +24,7 @@ metadata:
     release: monitoring-stack
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    
 spec:
   selector:
     matchLabels:
@@ -42,7 +42,7 @@ metadata:
     release: monitoring-stack
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    
 spec:
   selector:
     matchLabels:
@@ -60,7 +60,7 @@ metadata:
     release: monitoring-stack
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    
 spec:
   selector:
     matchLabels:
@@ -77,7 +77,7 @@ metadata:
     release: monitoring-stack
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    
 spec:
   selector:
     matchLabels:
@@ -95,7 +95,7 @@ metadata:
     release: monitoring-stack
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    
 spec:
   selector:
     matchLabels:
@@ -113,7 +113,7 @@ metadata:
     release: monitoring-stack
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    
 spec:
   selector:
     matchLabels:
