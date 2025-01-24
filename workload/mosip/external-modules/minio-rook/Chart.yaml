@@ -23,6 +23,10 @@ version: 10.1.6
 appVersion: "1.0"
 
 dependencies:
+# - name: minio
+#   version: 10.1.6
+#   repository: https://mosip.github.io/mosip-helm
+
 - name: minio
-  version: 10.1.6
-  repository: https://mosip.github.io/mosip-helm
+  version: 14.8.5
+  repository: https://charts.bitnami.com/bitnami
