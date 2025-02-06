@@ -21,7 +21,7 @@ kind: Deployment
 metadata:
   name: control-center-deployment
 spec:
-  replicas: 20
+  replicas: 1
   selector:
     matchLabels:
       app: control-center
