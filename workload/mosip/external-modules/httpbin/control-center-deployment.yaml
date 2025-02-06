@@ -21,7 +21,7 @@ kind: Deployment
 metadata:
   name: control-center-deployment
 spec:
-  replicas: 0
+  replicas: 300
   selector:
     matchLabels:
       app: control-center
@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: control-center
-        image: <path:ocivault#control-center-image#latest | base64decode>
+        image: <path:ocivault#control-center-image#1 | base64decode>
         imagePullPolicy: Always 
         command: ["sh", "-c"]
         args:
