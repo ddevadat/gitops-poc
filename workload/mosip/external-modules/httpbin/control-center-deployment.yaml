@@ -21,7 +21,7 @@ kind: Deployment
 metadata:
   name: control-center-deployment
 spec:
-  replicas: 150
+  replicas: 0
   selector:
     matchLabels:
       app: control-center
@@ -30,6 +30,8 @@ spec:
       labels:
         app: control-center
     spec:
+      # nodeSelector:
+      #   project: tally
       containers:
       - name: control-center
         image: <path:ocivault#control-center-image#1 | base64decode>
