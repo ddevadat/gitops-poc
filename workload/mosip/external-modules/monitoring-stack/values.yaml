@@ -7,11 +7,22 @@ kube-prometheus-stack:
     prometheusSpec:
       serviceMonitorSelectorNilUsesHelmValues: false
       additionalScrapeConfigs:
+      # - job_name: 'process-exporter'
+      #   scrape_interval: 10s
+      #   static_configs:
+      #     - targets:
+      #         - 'process-exporter.process-exporter-ns.svc.cluster.local:9256'
       - job_name: 'process-exporter'
         scrape_interval: 10s
-        static_configs:
-          - targets:
-              - 'process-exporter.process-exporter-ns.svc.cluster.local:9256'
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_node_name]
+            target_label: node
+          - source_labels: [__meta_kubernetes_pod_ip]
+            target_label: __address__
+            regex: (.*)
+            replacement: ${1}:9256
   grafana:
     adminPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
     datasources: 
