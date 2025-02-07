@@ -73,3 +73,23 @@ spec:
       - name: config-volume
         configMap:
           name: process-exporter-config
+
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: process-exporter
+  namespace: process-exporter-ns
+  labels:
+    app: process-exporter
+spec:
+  clusterIP: None  # Headless service for pod discovery
+  selector:
+    app: process-exporter
+  ports:
+    - name: metrics
+      port: 9256
+      targetPort: 9256
+      protocol: TCP

@@ -11,7 +11,7 @@ kube-prometheus-stack:
         scrape_interval: 10s
         static_configs:
           - targets:
-              - '10.0.72.248:9256'
+              - 'process-exporter.process-exporter-ns.svc.cluster.local:9256'
   grafana:
     adminPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
     datasources: 
