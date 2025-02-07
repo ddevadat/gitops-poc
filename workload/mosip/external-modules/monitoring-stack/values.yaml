@@ -6,6 +6,12 @@ kube-prometheus-stack:
   prometheus:
     prometheusSpec:
       serviceMonitorSelectorNilUsesHelmValues: false
+      additionalScrapeConfigs:
+      - job_name: 'process-exporter'
+        scrape_interval: 10s
+        static_configs:
+          - targets:
+              - 'localhost:9256'
   grafana:
     adminPassword: "<path:ocivault#mosip_minio_admin_password#latest | base64decode>"
     datasources: 
