@@ -1,6 +1,31 @@
 images:
   - kix.ocir.io/apaccpt03/mosip/busybox:uclibc
   - kix.ocir.io/apaccpt03/mosip/busybox:stable-uclibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:stable-musl
+  - kix.ocir.io/apaccpt03/mosip/busybox:stable-glibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:stable
+  - kix.ocir.io/apaccpt03/mosip/busybox:musl
+  - kix.ocir.io/apaccpt03/mosip/busybox:glibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.37.0-uclibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.37.0-musl
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.37.0-glibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.37.0
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.37-uclibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.37-musl
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.37-glibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.37
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.36.1-uclibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.36.1-musl
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.36.1-glibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.36.1
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.36-uclibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.36-musl
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.36-glibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1.36
+  - kix.ocir.io/apaccpt03/mosip/busybox:1-uclibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1-musl
+  - kix.ocir.io/apaccpt03/mosip/busybox:1-glibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:1
 
 nodeSelector:
   project: rook
