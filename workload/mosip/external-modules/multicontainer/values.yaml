@@ -1,0 +1,12 @@
+images:
+  - kix.ocir.io/apaccpt03/mosip/nginx:stable-alpine-perl
+  - kix.ocir.io/apaccpt03/mosip/nginx:stable-alpine3.20-perl
+
+nodeSelector:
+  project: rook
+
+tolerations:
+  - key: "project"
+    operator: "Equal"
+    value: "rook"
+    effect: "NoSchedule" 
