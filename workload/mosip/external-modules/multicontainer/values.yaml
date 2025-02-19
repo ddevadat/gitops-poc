@@ -1,6 +1,6 @@
 images:
-  - kix.ocir.io/apaccpt03/mosip/nginx:stable-alpine-perl
-  - kix.ocir.io/apaccpt03/mosip/nginx:stable-alpine3.20-perl
+  - kix.ocir.io/apaccpt03/mosip/busybox:uclibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:stable-uclibc
 
 nodeSelector:
   project: rook
