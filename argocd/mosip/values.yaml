@@ -26,12 +26,12 @@ external:
         argocd.argoproj.io/sync-wave: "-99"
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: multicontainer
-    #   path: workload/mosip/external-modules/multicontainer
-    #   namespace: multicontainer
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-99"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: multicontainer
+      path: workload/mosip/external-modules/multicontainer
+      namespace: multicontainer
+      annotations:
+        argocd.argoproj.io/sync-wave: "-99"
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: mosip-monitoring
     #   repo_url: https://prometheus-community.github.io/helm-charts
