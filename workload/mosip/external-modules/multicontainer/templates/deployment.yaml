@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: {{ .Release.Name }}
@@ -27,3 +27,30 @@ spec:
           imagePullPolicy: Always
           command: ["sleep", "3600"]
       {{- end }}
+---
+
+apiVersion: v1
+kind: List
+items:
+  {{- range $index, $image := .Values.images }}
+  - apiVersion: v1
+    kind: Pod
+    metadata:
+      name: {{ $.Release.Name }}-pod-{{ $index }}
+      labels:
+        app: {{ $.Release.Name }}-pod-{{ $index }}
+    spec:
+      nodeSelector:
+        {{- range $key, $value := $.Values.nodeSelector }}
+        {{ $key }}: {{ $value | quote }}
+        {{- end }}
+      tolerations:
+        {{- if $.Values.tolerations }}
+        {{- toYaml $.Values.tolerations | nindent 8 }}
+        {{- end }}
+      containers:
+        - name: container{{ add $index 1 }}
+          image: {{ $image }}
+          imagePullPolicy: Always
+          command: ["sleep", "3600"]
+  {{- end }}
