@@ -28,10 +28,10 @@ images:
   # - kix.ocir.io/apaccpt03/mosip/busybox:1
 
 nodeSelector:
-  project: rook1
+  project: rook
 
 tolerations:
   - key: "project"
     operator: "Equal"
-    value: "rook1"
+    value: "rook"
     effect: "NoSchedule" 
