@@ -1,6 +1,6 @@
 images:
   - kix.ocir.io/apaccpt03/mosip/busybox:uclibc
-  # - kix.ocir.io/apaccpt03/mosip/busybox:stable-uclibc
+  - kix.ocir.io/apaccpt03/mosip/busybox:stable-uclibc
   # - kix.ocir.io/apaccpt03/mosip/busybox:stable-musl
   # - kix.ocir.io/apaccpt03/mosip/busybox:stable-glibc
   # - kix.ocir.io/apaccpt03/mosip/busybox:stable
