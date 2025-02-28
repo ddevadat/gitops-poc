@@ -12,10 +12,10 @@ traefik:
   ingressRoute:
     dashboard:
       enabled: true
-  ports:
-    web:
-      redirectTo:
-        port: websecure
+  # ports:
+  #   web:
+  #     redirectTo:
+  #       port: websecure
     # websecure:
     #   forwardedHeaders:
     #     insecure: true
