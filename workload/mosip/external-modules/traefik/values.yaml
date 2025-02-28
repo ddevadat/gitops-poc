@@ -5,7 +5,10 @@ ansibleenv:
 domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
 
 
-traefik: 
+traefik:
+  globalArguments:
+  - "--api.insecure=true"
+  - "--api.dashboard=true"
   ingressRoute:
     dashboard:
       enabled: true
