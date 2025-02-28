@@ -8,9 +8,8 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 traefik: 
   ports:
     web:
-      redirections:
-        entryPoint:
-          port: websecure
+      redirectTo:
+        port: websecure
   service:
     annotations:
       oci.oraclecloud.com/load-balancer-type: lb
