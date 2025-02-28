@@ -154,6 +154,46 @@ spec:
         {{- end }}
 ---
 {{- else }}
+{{- if eq .name "traefik" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  namespace: argocd
+  {{- if .annotations }}
+  annotations:
+    {{- range $key, $value := .annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+    {{- end }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ $.Values.external.destination.server }}
+    namespace: {{ .namespace }}
+  project: default
+  source:
+    repoURL: {{ $.Values.external.source.repoURL }}
+    targetRevision: {{ $.Values.external.source.targetRevision }}
+    path: {{ .path }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - ServerSideApply=true
+    {{- if .namespace_labels }}
+    managedNamespaceMetadata:
+      labels:
+        {{- range $key, $value := .namespace_labels }}
+        {{ $key }}: {{ $value }}
+        {{- end }}
+        {{- end }}
+---
+{{- else }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -191,6 +231,7 @@ spec:
         {{- end }}
         {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
