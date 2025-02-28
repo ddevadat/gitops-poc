@@ -12,17 +12,13 @@ traefik:
   ingressRoute:
     dashboard:
       enabled: true
-  # ports:
-  #   web:
-  #     redirectTo:
-  #       port: websecure
-    # websecure:
-    #   forwardedHeaders:
-    #     insecure: true
-    #   proxyProtocol:
-    #     insecure: true
-    #   tls:
-    #     enabled: false
+  ports:
+    web:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
   service:
     annotations:
       oci.oraclecloud.com/load-balancer-type: lb
