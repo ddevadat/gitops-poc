@@ -12,7 +12,6 @@ traefik:
   ingressRoute:
     dashboard:
       enabled: true
-      entryPoints: ["websecure"]
   ports:
     web:
       redirectTo:
