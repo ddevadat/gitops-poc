@@ -6,6 +6,10 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 
 
 traefik: 
+  ingressRoute:
+    dashboard:
+      enabled: true
+      entryPoints: ["websecure"]
   ports:
     web:
       redirectTo:
