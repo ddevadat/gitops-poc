@@ -35,7 +35,7 @@ external:
 
     # - name: traefik
     #   path: workload/mosip/external-modules/traefik
-    #   namespace: istio-system
+    #   namespace: traefik
     #   annotations:
     #     argocd.argoproj.io/sync-wave: "-99"
     #     argocd.argoproj.io/manifest-generate-paths: .
