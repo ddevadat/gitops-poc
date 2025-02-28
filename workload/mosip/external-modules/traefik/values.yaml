@@ -9,10 +9,10 @@ traefik:
   globalArguments:
   - "--api.insecure=true"
   - "--api.dashboard=true"
-  ingressRoute:
-    dashboard:
-      enabled: true
-      entryPoints: ["websecure"]
+  # ingressRoute:
+  #   dashboard:
+  #     enabled: true
+  #     entryPoints: ["websecure"]
   ports:
     # web:
     #   redirectTo:
