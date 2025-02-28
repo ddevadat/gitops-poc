@@ -19,12 +19,12 @@ external:
     #     argocd.argoproj.io/sync-wave: "-100"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
-    - name: httpbin
-      path: workload/mosip/external-modules/httpbin
-      namespace: istio-system
-      annotations:
-        argocd.argoproj.io/sync-wave: "-99"
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: httpbin
+    #   path: workload/mosip/external-modules/httpbin
+    #   namespace: istio-system
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "-99"
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: multicontainer
     #   path: workload/mosip/external-modules/multicontainer
