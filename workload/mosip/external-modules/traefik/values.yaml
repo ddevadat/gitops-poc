@@ -7,7 +7,7 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 
 traefik:
   globalArguments:
-  - "--api.insecure=true"
+  - "--api=true"
   - "--api.dashboard=true"
   ingressRoute:
     dashboard:
