@@ -17,13 +17,13 @@ traefik:
     # web:
     #   redirectTo:
     #     port: websecure
-  websecure:
-    forwardedHeaders:
-      insecure: true
-    proxyProtocol:
-      insecure: true
-    tls:
-      enabled: false
+    websecure:
+      forwardedHeaders:
+        insecure: true
+      proxyProtocol:
+        insecure: true
+      tls:
+        enabled: false
   service:
     annotations:
       oci.oraclecloud.com/load-balancer-type: lb
