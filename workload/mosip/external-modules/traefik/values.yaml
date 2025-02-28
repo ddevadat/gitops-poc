@@ -7,11 +7,10 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 
 traefik:
   globalArguments:
-  - "--api=true"
-  - "--api.dashboard=true"
+  - "--api.insecure=true"
   ingressRoute:
     dashboard:
-      enabled: true
+      enabled: false
       # Custom match rule with host domain
       matchRule: Host(`traefik.<path:ocivault#openg2p_domain#latest | base64decode>`)
       entryPoints: ["websecure"]
@@ -19,6 +18,21 @@ traefik:
       middlewares:
         - name: traefik-dashboard-auth
   extraObjects:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: traefik-api
+    spec:
+      type: ClusterIP
+      selector:
+        app.kubernetes.io/name: traefik
+        app.kubernetes.io/instance: traefik-default
+      ports:
+      - port: 8080
+        name: traefik
+        targetPort: 8080
+        protocol: TCP
+
   - apiVersion: v1
     kind: Secret
     metadata:
@@ -34,6 +48,25 @@ traefik:
     spec:
       basicAuth:
         secret: traefik-dashboard-auth-secret
+  - apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: traefik-dashboard
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.middlewares: default-traefik-dashboard-auth@kubernetescrd
+    spec:
+      rules:
+      - host: traefik.<path:ocivault#openg2p_domain#latest | base64decode>
+        http:
+          paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik-api
+                port:
+                  name: traefik
   ports:
     web:
       redirections:
