@@ -68,6 +68,9 @@ traefik:
                 port:
                   name: traefik
   ports:
+    traefik:
+      expose:
+        default: true
     web:
       redirections:
         entryPoint:
