@@ -40,8 +40,8 @@ traefik:
       # Add custom middlewares : authentication and redirection
       # middlewares:
       #   - name: traefik-dashboard-auth
-      # tls:
-      #   secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+      tls:
+        secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   # extraObjects:
   # - apiVersion: v1
   #   kind: Service
