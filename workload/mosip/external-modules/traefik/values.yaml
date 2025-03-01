@@ -8,6 +8,10 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 traefik:
   # globalArguments:
   # - "--api.insecure=true"
+  tlsStore:
+    default:
+      defaultCertificate:
+        secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   ingressRoute:
     dashboard:
       enabled: true
