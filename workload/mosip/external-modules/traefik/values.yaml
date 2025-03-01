@@ -34,7 +34,7 @@ traefik:
           scheme: https
   ingressRoute:
     dashboard:
-      enabled: true
+      enabled: false
       matchRule: Host(`traefik.<path:ocivault#openg2p_domain#latest | base64decode>`)
       entryPoints: ["websecure"]
       # Add custom middlewares : authentication and redirection
