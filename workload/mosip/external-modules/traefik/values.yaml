@@ -12,6 +12,8 @@ traefik:
     default:
       labels: {}
       sniStrict: true
+      maxVersion: VersionTLS13
+      minVersion: VersionTLS12
     custom-options:
       labels: {}
       curvePreferences:
