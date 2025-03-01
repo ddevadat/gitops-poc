@@ -6,8 +6,8 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 
 
 traefik:
-  # globalArguments:
-  # - "--api.insecure=true"
+  globalArguments:
+  - "--api=true"
   # tlsOptions:
   #   default:
   #     labels: {}
@@ -19,10 +19,10 @@ traefik:
   #     curvePreferences:
   #       - CurveP521
   #       - CurveP384
-  tlsStore:
-    default:
-      defaultCertificate:
-        secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+  # tlsStore:
+  #   default:
+  #     defaultCertificate:
+  #       secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   ports:
     # traefik:
     #   expose:
@@ -34,32 +34,31 @@ traefik:
           scheme: https
   ingressRoute:
     dashboard:
-      enabled: false
+      enabled: true
       matchRule: Host(`traefik.<path:ocivault#openg2p_domain#latest | base64decode>`)
       entryPoints: ["websecure"]
-      # Add custom middlewares : authentication and redirection
-      # middlewares:
-      #   - name: traefik-dashboard-auth
-      services:
-        - name: traefik-api
-          port: 8080
+      middlewares:
+        - name: traefik-dashboard-auth
+      # services:
+      #   - name: traefik-api
+      #     port: 8080
       tls:
         secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   extraObjects:
-  - apiVersion: v1
-    kind: Service
-    metadata:
-      name: traefik-api
-    spec:
-      type: ClusterIP
-      selector:
-        app.kubernetes.io/name: traefik
-        app.kubernetes.io/instance: traefik-traefik
-      ports:
-      - port: 8080
-        name: traefik
-        targetPort: 8080
-        protocol: TCP
+  # - apiVersion: v1
+  #   kind: Service
+  #   metadata:
+  #     name: traefik-api
+  #   spec:
+  #     type: ClusterIP
+  #     selector:
+  #       app.kubernetes.io/name: traefik
+  #       app.kubernetes.io/instance: traefik-traefik
+  #     ports:
+  #     - port: 8080
+  #       name: traefik
+  #       targetPort: 8080
+  #       protocol: TCP
 
   - apiVersion: v1
     kind: Secret
@@ -76,40 +75,40 @@ traefik:
     spec:
       basicAuth:
         secret: traefik-dashboard-auth-secret
-  - apiVersion: networking.k8s.io/v1
-    kind: Ingress
-    metadata:
-      name: traefik-dashboard
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        # traefik.ingress.kubernetes.io/router.middlewares: traefik-dashboard-auth@@kubernetescrd
-        traefik.ingress.kubernetes.io/router.middlewares: default-traefik-dashboard-auth@kubernetescrd
-    spec:
-      rules:
-      - host: traefik.<path:ocivault#openg2p_domain#latest | base64decode>
-        http:
-          paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: traefik-api
-                port:
-                  name: traefik
-      tls:
-        - hosts:
-            - traefik.<path:ocivault#openg2p_domain#latest | base64decode>
-          secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+  # - apiVersion: networking.k8s.io/v1
+  #   kind: Ingress
+  #   metadata:
+  #     name: traefik-dashboard
+  #     annotations:
+  #       traefik.ingress.kubernetes.io/router.entrypoints: websecure
+  #       # traefik.ingress.kubernetes.io/router.middlewares: traefik-dashboard-auth@@kubernetescrd
+  #       traefik.ingress.kubernetes.io/router.middlewares: default-traefik-dashboard-auth@kubernetescrd
+  #   spec:
+  #     rules:
+  #     - host: traefik.<path:ocivault#openg2p_domain#latest | base64decode>
+  #       http:
+  #         paths:
+  #         - path: /
+  #           pathType: Prefix
+  #           backend:
+  #             service:
+  #               name: traefik-api
+  #               port:
+  #                 name: traefik
+  #     tls:
+  #       - hosts:
+  #           - traefik.<path:ocivault#openg2p_domain#latest | base64decode>
+  #         secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
       
-  ingressClass:  # @schema additionalProperties: false
-    enabled: true
-    isDefaultClass: true
-    name: "traefik"
-  providers:
-    kubernetesCRD:
-      ingressClass: traefik
-    kubernetesIngress:
-      ingressClass: traefik
+  # ingressClass:  # @schema additionalProperties: false
+  #   enabled: true
+  #   isDefaultClass: true
+  #   name: "traefik"
+  # providers:
+  #   kubernetesCRD:
+  #     ingressClass: traefik
+  #   kubernetesIngress:
+  #     ingressClass: traefik
   service:
     annotations:
       oci.oraclecloud.com/load-balancer-type: lb
