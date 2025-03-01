@@ -24,9 +24,9 @@ traefik:
   #     defaultCertificate:
   #       secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   ports:
-    # traefik:
-    #   expose:
-    #     default: true
+    traefik:
+      expose:
+        default: true
     web:
       redirections:
         entryPoint:
@@ -41,25 +41,25 @@ traefik:
       # middlewares:
       #   - name: traefik-dashboard-auth
       services:
-        - name: traefik
-          port: 443
+        - name: traefik-api
+          port: 8080
       tls:
         secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
-  # extraObjects:
-  # - apiVersion: v1
-  #   kind: Service
-  #   metadata:
-  #     name: traefik-api
-  #   spec:
-  #     type: ClusterIP
-  #     selector:
-  #       app.kubernetes.io/name: traefik
-  #       app.kubernetes.io/instance: traefik-traefik
-  #     ports:
-  #     - port: 8080
-  #       name: traefik
-  #       targetPort: 8080
-  #       protocol: TCP
+  extraObjects:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: traefik-api
+    spec:
+      type: ClusterIP
+      selector:
+        app.kubernetes.io/name: traefik
+        app.kubernetes.io/instance: traefik-traefik
+      ports:
+      - port: 8080
+        name: traefik
+        targetPort: 8080
+        protocol: TCP
 
   # - apiVersion: v1
   #   kind: Secret
