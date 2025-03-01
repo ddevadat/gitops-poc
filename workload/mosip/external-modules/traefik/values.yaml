@@ -97,8 +97,7 @@ traefik:
                 port:
                   name: traefik
       tls:
-        hosts:
-          - traefik.<path:ocivault#openg2p_domain#latest | base64decode> 
+        hosts: ["traefik.<path:ocivault#openg2p_domain#latest | base64decode>"]
         secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>  
       
   ingressClass:  # @schema additionalProperties: false
