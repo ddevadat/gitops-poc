@@ -33,7 +33,7 @@ traefik:
       middlewares:
         - name: traefik-dashboard-auth
       tls:
-        TLSStore: default
+        store: default
   extraObjects:
   # - apiVersion: v1
   #   kind: Service
