@@ -11,6 +11,7 @@ traefik:
   - "--api.debug=true"
   - "--global.checknewversion"
   - "--global.sendanonymoususage"
+  - "--api.dashboard=true"
   tlsOptions:
     default:
       labels: {}
