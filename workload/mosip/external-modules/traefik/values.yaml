@@ -84,7 +84,7 @@ traefik:
   #               name: traefik-api
   #               port:
   #                 name: traefik
-  ports:
+  # ports:
     # traefik:
     #   expose:
     #     default: true
