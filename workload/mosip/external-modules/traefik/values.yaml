@@ -88,12 +88,12 @@ traefik:
     # traefik:
     #   expose:
     #     default: true
-    web:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
-          permanent: true
+    # web:
+    #   redirections:
+    #     entryPoint:
+    #       to: websecure
+    #       scheme: https
+    #       permanent: true
   service:
     annotations:
       oci.oraclecloud.com/load-balancer-type: lb
