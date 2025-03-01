@@ -33,7 +33,9 @@ traefik:
       middlewares:
         - name: traefik-dashboard-auth
       tls:
-        secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+        stores:
+          default: 
+            TLSStore: default
   extraObjects:
   # - apiVersion: v1
   #   kind: Service
