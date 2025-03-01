@@ -37,6 +37,12 @@ spec:
         version: v1
     spec:
       serviceAccountName: httpbin
+      nodeSelector:
+        project: rook
+      tolerations:
+        - key: "project"
+          operator: "Exists"
+          effect: "NoSchedule"
       containers:
       - image: docker.io/kennethreitz/httpbin
         imagePullPolicy: IfNotPresent
