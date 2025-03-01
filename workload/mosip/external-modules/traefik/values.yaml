@@ -8,17 +8,17 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 traefik:
   globalArguments:
   - "--api=true"
-  # tlsOptions:
-  #   default:
-  #     labels: {}
-  #     sniStrict: true
-  #     maxVersion: VersionTLS13
-  #     minVersion: VersionTLS12
-  #   custom-options:
-  #     labels: {}
-  #     curvePreferences:
-  #       - CurveP521
-  #       - CurveP384
+  tlsOptions:
+    default:
+      labels: {}
+      sniStrict: true
+      maxVersion: VersionTLS13
+      minVersion: VersionTLS12
+    custom-options:
+      labels: {}
+      curvePreferences:
+        - CurveP521
+        - CurveP384
   # tlsStore:
   #   default:
   #     defaultCertificate:
