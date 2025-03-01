@@ -36,7 +36,7 @@ traefik:
     dashboard:
       enabled: true
       matchRule: Host(`traefik.<path:ocivault#openg2p_domain#latest | base64decode>`)
-      entryPoints: ["websecure","web"]
+      entryPoints: ["websecure"]
       # Add custom middlewares : authentication and redirection
       # middlewares:
       #   - name: traefik-dashboard-auth
