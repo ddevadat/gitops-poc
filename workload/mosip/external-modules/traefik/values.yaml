@@ -17,11 +17,7 @@ traefik:
       sniStrict: true
       maxVersion: VersionTLS13
       minVersion: VersionTLS12
-    custom-options:
-      labels: {}
-      curvePreferences:
-        - CurveP521
-        - CurveP384
+
   # tlsStore:
   #   default:
   #     defaultCertificate:
@@ -46,6 +42,8 @@ traefik:
       #   - name: traefik-api
       #     port: 8080
       tls:
+        options:
+          name: default
         secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   extraObjects:
   # - apiVersion: v1
