@@ -25,11 +25,11 @@ traefik:
     # traefik:
     #   expose:
     #     default: true
-    web:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
+    # web:
+    #   redirections:
+    #     entryPoint:
+    #       to: websecure
+    #       scheme: https
     websecure:
       tls:
         options: default
@@ -37,16 +37,16 @@ traefik:
     dashboard:
       enabled: true
       matchRule: Host(`traefik.<path:ocivault#openg2p_domain#latest | base64decode>`)
-      entryPoints: ["websecure"]
+      entryPoints: ["web"]
       middlewares:
         - name: traefik-dashboard-auth
       # services:
       #   - name: traefik-api
       #     port: 8080
-      tls:
-        options:
-          name: default
-        secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+      # tls:
+      #   options:
+      #     name: default
+      #   secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   extraObjects:
   # - apiVersion: v1
   #   kind: Service
