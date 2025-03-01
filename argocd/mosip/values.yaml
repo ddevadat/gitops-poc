@@ -23,7 +23,7 @@ external:
       path: workload/mosip/external-modules/httpbin
       namespace: httpbin
       namespace_labels:
-        istio_injection_label: enabled
+        istio-injection: enabled
       annotations:
         argocd.argoproj.io/sync-wave: "-99"
         argocd.argoproj.io/manifest-generate-paths: .
