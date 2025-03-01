@@ -6,8 +6,8 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 
 
 traefik:
-  globalArguments:
-  - "--api.insecure=true"
+  # globalArguments:
+  # - "--api.insecure=true"
   # tlsOptions:
   #   default:
   #     labels: {}
