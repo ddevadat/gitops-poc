@@ -41,9 +41,9 @@ traefik:
       entryPoints: ["web"]
       middlewares:
         - name: traefik-dashboard-auth
-      services:
-        - name: traefik-api
-          port: 8080
+      # services:
+      #   - name: traefik-api
+      #     port: 8080
       # tls:
       #   options:
       #     name: default
