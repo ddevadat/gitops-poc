@@ -38,9 +38,9 @@ spec:
     spec:
       serviceAccountName: httpbin
       nodeSelector:
-        project: rook
+        storage: longhorn
       tolerations:
-        - key: "project"
+        - key: "storage"
           operator: "Exists"
           effect: "NoSchedule"
       containers:
