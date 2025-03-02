@@ -23,9 +23,9 @@ traefik:
   #     defaultCertificate:
   #       secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   ports:
-    # traefik:
-    #   expose:
-    #     default: true
+    traefik:
+      expose:
+        default: true
     # web:
     #   redirections:
     #     entryPoint:
