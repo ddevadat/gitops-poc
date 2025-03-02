@@ -30,10 +30,10 @@ traefik:
         entryPoint:
           to: websecure
           scheme: https
-    websecure:
-      proxyProtocol:
-        trustedIPs: ["0.0.0.0/0"]
-        insecure: true
+    # websecure:
+    #   proxyProtocol:
+    #     trustedIPs: ["0.0.0.0/0"]
+    #     insecure: true
   ingressRoute:
     dashboard:
       enabled: true
