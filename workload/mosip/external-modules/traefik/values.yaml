@@ -119,7 +119,7 @@ traefik:
     annotations:
       oci.oraclecloud.com/load-balancer-type: lb
       oci.oraclecloud.com/ingress-ip-mode: "proxy"
-      service.beta.kubernetes.io/oci-load-balancer-backend-protocol: HTTP
+      service.beta.kubernetes.io/oci-load-balancer-backend-protocol: TCP
       service.beta.kubernetes.io/oci-load-balancer-shape: flexible
       service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
       service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
