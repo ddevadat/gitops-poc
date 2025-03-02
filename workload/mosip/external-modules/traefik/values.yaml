@@ -37,7 +37,7 @@ traefik:
     dashboard:
       enabled: true
       matchRule: Host(`traefik.<path:ocivault#openg2p_domain#latest | base64decode>`)
-      entryPoints: ["web"]
+      entryPoints: ["web","websecure"]
       middlewares:
         - name: traefik-dashboard-auth
       # services:
