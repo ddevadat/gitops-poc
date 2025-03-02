@@ -8,7 +8,6 @@ domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | b
 traefik:
   globalArguments:
   - "--api=true"
-  - "--api.debug=true"
   - "--global.checknewversion"
   - "--global.sendanonymoususage"
   - "--api.dashboard=true"
@@ -26,19 +25,19 @@ traefik:
     traefik:
       expose:
         default: true
-    web:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
-    websecure:
-      tls:
-        options: default
+    # web:
+    #   redirections:
+    #     entryPoint:
+    #       to: websecure
+    #       scheme: https
+    # websecure:
+    #   tls:
+    #     options: default
   ingressRoute:
     dashboard:
       enabled: true
       matchRule: Host(`traefik.<path:ocivault#openg2p_domain#latest | base64decode>`)
-      entryPoints: ["websecure","web"]
+      entryPoints: ["web"]
       middlewares:
         - name: traefik-dashboard-auth
       # services:
@@ -122,7 +121,7 @@ traefik:
       service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
       service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
       service.beta.kubernetes.io/oci-load-balancer-ssl-ports: "443"
-      # service.beta.kubernetes.io/oci-load-balancer-tls-secret: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+      service.beta.kubernetes.io/oci-load-balancer-tls-secret: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
       service.beta.kubernetes.io/oci-load-balancer-subnet1: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
       oci.oraclecloud.com/oci-network-security-groups: <path:ocivault#mosip_public_lb_nsg_id#latest | base64decode>
       oci.oraclecloud.com/security-rule-management-mode: "None"  
