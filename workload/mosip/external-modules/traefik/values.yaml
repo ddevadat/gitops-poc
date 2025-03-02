@@ -30,9 +30,9 @@ traefik:
     #     entryPoint:
     #       to: websecure
     #       scheme: https
-    # websecure:
-    #   tls:
-    #     options: default
+    websecure:
+      tls:
+        enabled: false
   ingressRoute:
     dashboard:
       enabled: true
