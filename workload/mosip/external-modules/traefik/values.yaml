@@ -33,7 +33,7 @@ traefik:
     websecure:
       proxyProtocol:
         trustedIPs: ["0.0.0.0/0"]
-        insecure: true
+        insecure: false
   ingressRoute:
     dashboard:
       enabled: true
