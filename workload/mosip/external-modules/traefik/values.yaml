@@ -44,9 +44,9 @@ traefik:
       # services:
       #   - name: traefik-api
       #     port: 8080
-      tls:
-        options:
-          name: default
+      # tls:
+      #   options:
+      #     name: default
       #   secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   extraObjects:
   # - apiVersion: v1
