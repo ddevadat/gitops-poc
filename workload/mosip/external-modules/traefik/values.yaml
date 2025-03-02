@@ -17,10 +17,10 @@ traefik:
       maxVersion: VersionTLS13
       minVersion: VersionTLS12
 
-  # tlsStore:
-  #   default:
-  #     defaultCertificate:
-  #       secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+  tlsStore:
+    default:
+      defaultCertificate:
+        secretName: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
   ports:
     traefik:
       expose:
