@@ -4,7 +4,7 @@ postgresql:
   commonAnnotations: 
     argocd.argoproj.io/sync-wave: "-97"
   global:
-    storageClass: longhorn
+    storageClass: ceph-block
   auth:
     database: "mosippdb"
     password: <path:ocivault#mosip_pg_password#latest | base64decode> 
