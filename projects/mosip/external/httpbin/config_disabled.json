@@ -6,6 +6,5 @@
   "srcRepoURL": "https://github.com/ddevadat/gitops-poc.git",
   "srcTargetRevision": "",
   "labels": null,
-  "annotations": null,
-  "namepacelabels": {}
+  "annotations": null
 }
