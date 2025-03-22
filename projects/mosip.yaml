@@ -36,7 +36,7 @@ spec:
   generators:
   - git:
       files:
-      - path: workload/project-a/*/config.json
+      - path: projects/mosip/external/*/config.json
       repoURL: https://github.com/ddevadat/gitops-poc.git
       requeueAfterSeconds: 20
       revision: ""
@@ -50,7 +50,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: '{{ appName }}'
-      name: '{{ userGivenName }}'
+      name: '{{ appName }}'
       namespace: argocd
     spec:
       destination:

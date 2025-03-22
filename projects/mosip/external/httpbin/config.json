@@ -1,0 +1,10 @@
+{
+  "appName": "httpbin",
+  "destNamespace": "istio-system",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "workload/project-a/external/httpbin",
+  "srcRepoURL": "https://github.com/ddevadat/gitops-poc.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "annotations": null
+}
