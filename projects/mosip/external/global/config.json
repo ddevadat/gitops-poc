@@ -6,5 +6,8 @@
   "srcRepoURL": "https://github.com/ddevadat/gitops-poc.git",
   "srcTargetRevision": "",
   "labels": null,
-  "annotations": null
+  "annotations": null,
+  "namepacelabels": {
+    "istio-injection": "enabled"
+  }
 }
