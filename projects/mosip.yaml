@@ -71,4 +71,7 @@ spec:
           allowEmpty: true
           prune: true
           selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
 status: {}
