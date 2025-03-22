@@ -37,12 +37,12 @@ spec:
         version: v1
     spec:
       serviceAccountName: httpbin
-      nodeSelector:
-        storage: longhorn
-      tolerations:
-        - key: "storage"
-          operator: "Exists"
-          effect: "NoSchedule"
+      # nodeSelector:
+      #   storage: longhorn
+      # tolerations:
+      #   - key: "storage"
+      #     operator: "Exists"
+      #     effect: "NoSchedule"
       containers:
       - image: docker.io/kennethreitz/httpbin
         imagePullPolicy: IfNotPresent
