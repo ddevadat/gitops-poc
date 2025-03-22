@@ -7,5 +7,7 @@
   "srcTargetRevision": "",
   "labels": null,
   "annotations": null,
-  "namepacelabels": "istio-injection=enabled"
+  "namepacelabels": {
+    "istio-injection": "enabled"
+  }
 }

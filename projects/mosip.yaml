@@ -75,5 +75,6 @@ spec:
           - CreateNamespace=true
           - ApplyOutOfSyncOnly=true
         managedNamespaceMetadata:
-          labels: '{{ namepacelabels }}'
+          labels: 
+            '{{ namepacelabels }}'
 status: {}
