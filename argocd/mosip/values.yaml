@@ -175,8 +175,8 @@ external:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
       ignoreDifferences:
-      - group: apps
-        kind: Deployment
+      - group: apps/v1
+        kind: StatefulSet
         jsonPointers:
         - /spec/replicas
 
