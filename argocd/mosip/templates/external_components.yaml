@@ -223,6 +223,11 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
+      - RespectIgnoreDifferences=true
+    {{- if .ignoreDifferences }}
+    ignoreDifferences:
+      {{- toYaml .ignoreDifferences | nindent 6}}
+    {{- end }}
     {{- if .namespace_labels }}
     managedNamespaceMetadata:
       labels:
