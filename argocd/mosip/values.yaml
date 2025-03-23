@@ -179,7 +179,10 @@ external:
         kind: StatefulSet
         jsonPointers:
         - /status
-
+      - group: v1
+        kind: Pod
+        jsonPointers:
+        - /status
 
     # - name: kafka
     #   path: workload/mosip/external-modules/kafka
