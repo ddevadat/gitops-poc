@@ -182,7 +182,7 @@ external:
       - group: v1
         kind: Pod
         jsonPointers:
-        - /status
+        - /status/conditions
 
     # - name: kafka
     #   path: workload/mosip/external-modules/kafka
