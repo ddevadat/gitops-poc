@@ -180,7 +180,10 @@ external:
         jsonPointers:
         - /spec/replicas
         - /status
-
+      - group: "v1"
+        kind: Pod
+        jsonPointers:
+        - /status/conditions
 
     # - name: kafka
     #   path: workload/mosip/external-modules/kafka
