@@ -208,6 +208,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  {{- if .ignoreDifferences }}
+  ignoreDifferences:
+    {{- toYaml .ignoreDifferences | nindent 4}}
+  {{- end }}
   destination:
     server: {{ $.Values.external.destination.server }}
     namespace: {{ .namespace }}
@@ -224,10 +228,6 @@ spec:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
       - RespectIgnoreDifferences=true
-    {{- if .ignoreDifferences }}
-    ignoreDifferences:
-      {{- toYaml .ignoreDifferences | nindent 6}}
-    {{- end }}
     {{- if .namespace_labels }}
     managedNamespaceMetadata:
       labels:
