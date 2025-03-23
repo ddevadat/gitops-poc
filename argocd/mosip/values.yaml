@@ -179,6 +179,7 @@ external:
         kind: StatefulSet
         jsonPointers:
         - /spec/replicas
+        - /status
 
 
     # - name: kafka
