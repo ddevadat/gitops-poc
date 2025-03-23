@@ -167,18 +167,18 @@ external:
     #   annotations:
     #     argocd.argoproj.io/manifest-generate-paths: .
 
-    - name: activemq
-      path: workload/mosip/external-modules/activemq
-      namespace: activemq
-      namespace_labels:
-        istio_injection_label: enabled
-      annotations:
-        argocd.argoproj.io/manifest-generate-paths: .
-      ignoreDifferences:
-      - group: apps/v1
-        kind: StatefulSet
-        jsonPointers:
-        - /spec/replicas
+    # - name: activemq
+    #   path: workload/mosip/external-modules/activemq
+    #   namespace: activemq
+    #   namespace_labels:
+    #     istio_injection_label: enabled
+    #   annotations:
+    #     argocd.argoproj.io/manifest-generate-paths: .
+    #   ignoreDifferences:
+    #   - group: apps/v1
+    #     kind: StatefulSet
+    #     jsonPointers:
+    #     - /spec/replicas
 
 
     # - name: kafka
