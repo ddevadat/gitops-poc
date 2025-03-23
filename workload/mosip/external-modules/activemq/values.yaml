@@ -2,6 +2,11 @@ activemq-artemis:
   deployment:
     annotations: 
       argocd.argoproj.io/ignore-healthcheck: "true"
+  replica:
+    ## Artemis Replicas annotations
+    annotations: 
+      argocd.argoproj.io/ignore-healthcheck: "true"
+
   istio:
     enabled: true
     hosts:
