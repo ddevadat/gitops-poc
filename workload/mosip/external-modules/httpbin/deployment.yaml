@@ -15,37 +15,37 @@
 ##################################################################################################
 # httpbin service
 ##################################################################################################
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: httpbin
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: httpbin
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: httpbin
-      version: v1
-  template:
-    metadata:
-      labels:
-        app: httpbin
-        version: v1
-    spec:
-      serviceAccountName: httpbin
-      nodeSelector:
-        storage: longhorn
-      tolerations:
-        - key: "storage"
-          operator: "Exists"
-          effect: "NoSchedule"
-      containers:
-      - image: docker.io/kennethreitz/httpbin
-        imagePullPolicy: IfNotPresent
-        name: httpbin
-        ports:
-        - containerPort: 80
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: httpbin
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: httpbin
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: httpbin
+#       version: v1
+#   template:
+#     metadata:
+#       labels:
+#         app: httpbin
+#         version: v1
+#     spec:
+#       serviceAccountName: httpbin
+#       nodeSelector:
+#         storage: longhorn
+#       tolerations:
+#         - key: "storage"
+#           operator: "Exists"
+#           effect: "NoSchedule"
+#       containers:
+#       - image: docker.io/kennethreitz/httpbin
+#         imagePullPolicy: IfNotPresent
+#         name: httpbin
+#         ports:
+#         - containerPort: 80

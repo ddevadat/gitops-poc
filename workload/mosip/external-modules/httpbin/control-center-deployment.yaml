@@ -16,28 +16,28 @@
 
 # --- 
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: control-center-deployment
-spec:
-  replicas: 0
-  selector:
-    matchLabels:
-      app: control-center
-  template:
-    metadata:
-      labels:
-        app: control-center
-    spec:
-      nodeSelector:
-        project: tally2
-      containers:
-      - name: control-center
-        image: <path:ocivault#control-center-image#latest | base64decode>
-        imagePullPolicy: Always 
-        command: ["sh", "-c"]
-        args:
-          - 'while true; do echo "Running"; sleep 360000; done'
-      imagePullSecrets:
-        - name: ocir 
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: control-center-deployment
+# spec:
+#   replicas: 0
+#   selector:
+#     matchLabels:
+#       app: control-center
+#   template:
+#     metadata:
+#       labels:
+#         app: control-center
+#     spec:
+#       nodeSelector:
+#         project: tally2
+#       containers:
+#       - name: control-center
+#         image: <path:ocivault#control-center-image#latest | base64decode>
+#         imagePullPolicy: Always 
+#         command: ["sh", "-c"]
+#         args:
+#           - 'while true; do echo "Running"; sleep 360000; done'
+#       imagePullSecrets:
+#         - name: ocir 
