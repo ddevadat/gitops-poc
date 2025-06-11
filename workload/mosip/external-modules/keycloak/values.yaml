@@ -153,4 +153,4 @@ keycloak:
     host: <path:ocivault#genpg_host#latest | base64decode>         
     database: bitnami_keycloak
     user: bn_keycloak
-    password: "<path:ocivault#genpg#latest | base64decode> "
+    password: <path:ocivault#genpg#latest | base64decode>
