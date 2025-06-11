@@ -93,7 +93,7 @@ prometheus-postgres-exporter:
     datasource:
       # Specify one of both datasource or datasourceSecret
       host: <path:ocivault#genpg_host#latest | base64decode>           #  postgres-postgresql.postgres
-      user: pgmonitor
+      user: admin
       password: <path:ocivault#genpg#latest | base64decode> 
       port: "5432"
       database: 'bitnami_keycloak'
