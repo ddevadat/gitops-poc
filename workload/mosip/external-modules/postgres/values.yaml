@@ -27,5 +27,6 @@ postgresql:
             #!/bin/bash
             PGPASSWORD=$POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE ROLE bn_keycloak WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '"$POSTGRES_PASSWORD"';"
             PGPASSWORD=$POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE DATABASE bitnami_keycloak WITH OWNER = bn_keycloak TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
-
-
+            PGPASSWORD=$POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE USER pgmonitor WITH PASSWORD '"$POSTGRES_PASSWORD"';"
+            PGPASSWORD=$POSTGRES_PASSWORD psql -U postgres -d postgres -c "GRANT CONNECT ON DATABASE bitnami_keycloak TO pgmonitor;"
+            PGPASSWORD=$POSTGRES_PASSWORD psql -U postgres -d postgres -c "GRANT pg_monitor TO pgmonitor;"

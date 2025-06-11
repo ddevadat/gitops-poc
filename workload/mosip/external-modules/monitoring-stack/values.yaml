@@ -92,9 +92,9 @@ prometheus-postgres-exporter:
     ## ref: https://helm.sh/docs/developing_charts/#using-the-tpl-function
     datasource:
       # Specify one of both datasource or datasourceSecret
-      host: <path:ocivault#genpg_host#latest | base64decode>
-      user: admin
-      password: <path:ocivault#genpg#latest | base64decode>
+      host: postgres-postgresql.postgres
+      user: pgmonitor
+      password: <path:ocivault#mosip_pg_password#latest | base64decode> 
       port: "5432"
-      database: 'postgres'
+      database: 'bitnami_keycloak'
       sslmode: disable
