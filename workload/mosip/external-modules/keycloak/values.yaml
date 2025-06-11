@@ -142,10 +142,15 @@ keycloak:
   postgresql:
     enabled: false
   
+  # externalDatabase:
+  #   host: postgres-postgresql.postgres           
+  #   database: bitnami_keycloak
+  #   user: bn_keycloak
+  #   existingSecret: postgres-postgresql
+  #   existingSecretPasswordKey: password
+
   externalDatabase:
-    host: postgres-postgresql.postgres
+    host: <path:ocivault#genpg_host#latest | base64decode>         
     database: bitnami_keycloak
     user: bn_keycloak
-    existingSecret: postgres-postgresql
-    existingSecretPasswordKey: password
-  
+    password: "<path:ocivault#genpg#latest | base64decode> "
