@@ -121,6 +121,31 @@ prometheus-postgres-exporter:
           name: postgres-exporter-extra
       data:
         queries.yaml: |
+          pg_replication_slots_lag:
+            query: |
+              SELECT
+                slot_name,
+                slot_type,
+                database,
+                active,
+                pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn) AS replication_lag_bytes
+              FROM pg_replication_slots;
+            metrics:
+              - slot_name:
+                  usage: "LABEL"
+                  description: "Replication slot name"
+              - slot_type:
+                  usage: "LABEL"
+                  description: "Slot type (physical/logical)"
+              - database:
+                  usage: "LABEL"
+                  description: "Database associated with the slot"
+              - active:
+                  usage: "LABEL"
+                  description: "Whether the slot is actively used"
+              - replication_lag_bytes:
+                  usage: "GAUGE"
+                  description: "Amount of WAL data that has not been consumed by the slot (in bytes)"
           pg_replication_lag:
             query: |
               SELECT pid, client_addr,
