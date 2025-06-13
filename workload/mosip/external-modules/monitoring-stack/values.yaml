@@ -98,6 +98,20 @@ prometheus-postgres-exporter:
       port: "5432"
       database: 'postgres'
       sslmode: require
+
+  extraArgs:
+    - "--extend.query-path=/etc/config/queries.yaml"
+
+  extraVolumes:
+    - name: custom-queries
+      configMap:
+        name: postgres-exporter-queries
+
+  extraVolumeMounts:
+    - name: custom-queries
+      mountPath: /etc/config
+      readOnly: true
+
   extraManifests: 
     - apiVersion: v1
       kind: ConfigMap
