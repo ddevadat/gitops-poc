@@ -121,18 +121,27 @@ prometheus-postgres-exporter:
           name: postgres-exporter-extra
       data:
         queries.yaml: |
-          pg_stat_statements:
-            query: "SELECT userid, dbid, queryid, query, calls FROM pg_stat_statements"
+          pg_replication_slot:
+            query: |
+              select pid, client_addr, state, sync_state,
+                  pg_wal_lsn_diff(sent_lsn, write_lsn) as write_lsn_diff,
+                  pg_wal_lsn_diff(sent_lsn, flush_lsn) as flush_lsn_diff,
+                  pg_wal_lsn_diff(sent_lsn, replay_lsn) as replay_lsn_diff
+              from pg_stat_replication;
+            master: true
             metrics:
-              - userid:
+              - pid:
                   usage: "LABEL"
-                  description: "User OID"
-              - dbid:
+                  description: "The pid of the process. Used to deduplicate the queries if multiple slots from the same client"
+              - client_addr:
                   usage: "LABEL"
-                  description: "Database OID"
-              - queryid:
-                  usage: "LABEL"
-                  description: "Query ID"
-              - calls:
-                  usage: "COUNTER"
-                  description: "Number of times executed"
+                  description: "The replication client"
+              - write_lsn_diff:
+                  usage: "GAUGE"
+                  description: "The write lag in bytes"
+              - flush_lsn_diff:
+                  usage: "GAUGE"
+                  description: "The flush lag in bytes"
+              - replay_lsn_diff:
+                  usage: "GAUGE"
+                  description: "The replay lag in bytes"
