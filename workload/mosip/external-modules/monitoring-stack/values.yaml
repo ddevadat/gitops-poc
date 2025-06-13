@@ -123,13 +123,18 @@ prometheus-postgres-exporter:
         queries.yaml: |
           pg_replication_lag:
             query: |
-              SELECT EXTRACT(EPOCH FROM now() - pg_last_xact_replay_timestamp()) AS lag_seconds
-              WHERE pg_last_xact_replay_timestamp() IS NOT NULL;
+              SELECT pid, client_addr,
+                EXTRACT(EPOCH FROM now() - pg_stat_replication.replay_timestamp) AS lag_seconds
+              FROM pg_stat_replication
+              WHERE replay_timestamp IS NOT NULL;
+            master: true
             metrics:
+              - pid:
+                  usage: "LABEL"
+              - client_addr:
+                  usage: "LABEL"
               - lag_seconds:
                   usage: "GAUGE"
-                  description: "Replication lag in seconds based on last replayed transaction timestamp"
-                  
           pg_replication_slot:
             query: |
               select pid, client_addr, state, sync_state,
