@@ -102,8 +102,8 @@ prometheus-postgres-exporter:
     # extraArgs:
     #   - "--extend.query-path=/etc/config/queries.yaml"
   extraEnvs: 
-    - name: PG_EXPORTER_EXTEND_QUERY_PATH
-      value: /etc/config/queries.yaml
+    - name: PG_EXPORTER_CUSTOM_METRICS_PATH
+      value: /etc/config/custom_metrics.yaml
 
   extraVolumes:
     - name: custom-queries
@@ -123,67 +123,26 @@ prometheus-postgres-exporter:
         labels:
           name: postgres-exporter-extra
       data:
-        queries.yaml: |
-          pg_replication_slots_lag:
-            query: |
-              SELECT
-                slot_name,
-                slot_type,
-                database,
-                active,
-                pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn) AS replication_lag_bytes
-              FROM pg_replication_slots;
-            metrics:
-              - slot_name:
-                  usage: "LABEL"
-                  description: "Replication slot name"
-              - slot_type:
-                  usage: "LABEL"
-                  description: "Slot type (physical/logical)"
-              - database:
-                  usage: "LABEL"
-                  description: "Database associated with the slot"
-              - active:
-                  usage: "LABEL"
-                  description: "Whether the slot is actively used"
-              - replication_lag_bytes:
-                  usage: "GAUGE"
-                  description: "Amount of WAL data that has not been consumed by the slot (in bytes)"
-          # pg_replication_lag:
-          #   query: |
-          #     SELECT pid, client_addr,
-          #       EXTRACT(EPOCH FROM now() - pg_stat_replication.replay_timestamp) AS lag_seconds
-          #     FROM pg_stat_replication
-          #     WHERE replay_timestamp IS NOT NULL;
-          #   master: true
-          #   metrics:
-          #     - pid:
-          #         usage: "LABEL"
-          #     - client_addr:
-          #         usage: "LABEL"
-          #     - lag_seconds:
-          #         usage: "GAUGE"
-          # pg_replication_slot:
-          #   query: |
-          #     select pid, client_addr, state, sync_state,
-          #         pg_wal_lsn_diff(sent_lsn, write_lsn) as write_lsn_diff,
-          #         pg_wal_lsn_diff(sent_lsn, flush_lsn) as flush_lsn_diff,
-          #         pg_wal_lsn_diff(sent_lsn, replay_lsn) as replay_lsn_diff
-          #     from pg_stat_replication;
-          #   master: true
-          #   metrics:
-          #     - pid:
-          #         usage: "LABEL"
-          #         description: "The pid of the process. Used to deduplicate the queries if multiple slots from the same client"
-          #     - client_addr:
-          #         usage: "LABEL"
-          #         description: "The replication client"
-          #     - write_lsn_diff:
-          #         usage: "GAUGE"
-          #         description: "The write lag in bytes"
-          #     - flush_lsn_diff:
-          #         usage: "GAUGE"
-          #         description: "The flush lag in bytes"
-          #     - replay_lsn_diff:
-          #         usage: "GAUGE"
-          #         description: "The replay lag in bytes"
+        custom_metrics.yaml: |
+          metrics:
+            - name: pg_replication_slot_lag_bytes
+              query: |
+                SELECT
+                  slot_name,
+                  slot_type,
+                  database,
+                  active,
+                  pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn) AS lag_bytes
+                FROM pg_replication_slots
+              metrics:
+                - lag_bytes:
+                    usage: GAUGE
+                    description: "Replication lag in bytes"
+                - slot_name:
+                    usage: LABEL
+                - slot_type:
+                    usage: LABEL
+                - database:
+                    usage: LABEL
+                - active:
+                    usage: LABEL
