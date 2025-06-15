@@ -99,8 +99,8 @@ prometheus-postgres-exporter:
       database: 'postgres'
       sslmode: require
 
-  extraArgs:
-    - "--extend.query-path=/etc/config/queries.yaml"
+    extraArgs:
+      - "--extend.query-path=/etc/config/queries.yaml"
 
   extraVolumes:
     - name: custom-queries
