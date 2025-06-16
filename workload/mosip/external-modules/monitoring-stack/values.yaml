@@ -138,6 +138,7 @@ prometheus-postgres-exporter:
                 - lag_bytes:
                     usage: GAUGE
                     description: "Replication lag in bytes"
+                    metric_name: pg_replication_slot_lag_bytes
                 - slot_name:
                     usage: LABEL
                 - slot_type:
