@@ -133,16 +133,21 @@ prometheus-postgres-exporter:
                     pg_wal_lsn_diff(sent_lsn, replay_lsn) as replay_lsn_diff
                 from pg_stat_replication;
               metrics:
+                - pid:
+                    usage: "LABEL"
                 - client_addr:
-                    usage: LABEL
+                    usage: "LABEL"
                 - write_lsn_diff:
-                    usage: GAUGE
+                    usage: "GAUGE"
+                    description: "The write lag in bytes"
                     metric_name: pg_stat_replication_write_lsn_diff
                 - flush_lsn_diff:
-                    usage: GAUGE
+                    usage: "GAUGE"
+                    description: "The flush lag in bytes"
                     metric_name: pg_stat_replication_flush_lsn_diff
                 - replay_lsn_diff:
                     usage: "GAUGE"
+                    description: "The replay lag in bytes"
                     metric_name: pg_stat_replication_replay_lsn_diff
             - name: pg_replication_slot_lag_bytes
               query: |
