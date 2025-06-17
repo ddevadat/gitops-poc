@@ -125,6 +125,25 @@ prometheus-postgres-exporter:
       data:
         custom_metrics.yaml: |
           metrics:
+            - name: pg_replication_slot
+              query: |
+                select pid, client_addr, state, sync_state,
+                    pg_wal_lsn_diff(sent_lsn, write_lsn) as write_lsn_diff,
+                    pg_wal_lsn_diff(sent_lsn, flush_lsn) as flush_lsn_diff,
+                    pg_wal_lsn_diff(sent_lsn, replay_lsn) as replay_lsn_diff
+                from pg_stat_replication;
+              metrics:
+                - client_addr:
+                    usage: LABEL
+                - write_lsn_diff:
+                    usage: GAUGE
+                    metric_name: pg_stat_replication_write_lsn_diff
+                - flush_lsn_diff:
+                    usage: GAUGE
+                    metric_name: pg_stat_replication_flush_lsn_diff
+                - replay_lsn_diff:
+                    usage: "GAUGE"
+                    metric_name: pg_stat_replication_replay_lsn_diff
             - name: pg_replication_slot_lag_bytes
               query: |
                 SELECT
