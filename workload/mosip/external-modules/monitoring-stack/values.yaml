@@ -137,9 +137,13 @@ prometheus-postgres-exporter:
                     usage: "GAUGE"
                     description: "Disk space used by the database"
 
-            - name: oci_custom_replication_lag
+            - name: oci_custom_replication_lag            
               query: |
-                select pg_stat_replication.application_name,pg_stat_replication.client_addr, pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) / 1024 / 1024 AS lag_mb from  pg_stat_replication;              
+                SELECT
+                  application_name,
+                  client_addr,
+                  pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) AS lag_mb
+                FROM pg_stat_replication;
               metrics:
                 - application_name:
                     usage: "LABEL"
