@@ -185,7 +185,7 @@ prometheus-postgres-exporter:
                   database,
                   active,
                   pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn) AS lag_bytes
-                FROM pg_replication_slots
+                FROM pg_replication_slots;
               metrics:
                 - lag_bytes:
                     usage: GAUGE
@@ -211,7 +211,7 @@ prometheus-postgres-exporter:
                   max_exec_time AS long_queries_max_exec_time,
                   total_exec_time / NULLIF(calls, 0) AS long_queries_avg_exec_time
                 FROM pg_stat_statements
-                WHERE calls >= 100
+                WHERE calls >= 100;
               metrics:
                 - long_queries_calls:
                     usage: GAUGE
