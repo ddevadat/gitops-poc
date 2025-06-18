@@ -131,6 +131,7 @@ prometheus-postgres-exporter:
               metrics:
                 - value:
                     usage: GAUGE
+                    metric_name: test_metric
             - name: pg_replication_slot
               query: |
                 select pid, client_addr, state, sync_state,
