@@ -97,7 +97,7 @@ prometheus-postgres-exporter:
       user: admin
       password: <path:ocivault#genpg#latest | base64decode> 
       port: "5432"
-      database: 'postgres'
+      database: 'appdb'
       sslmode: require
 
     # extraArgs:
