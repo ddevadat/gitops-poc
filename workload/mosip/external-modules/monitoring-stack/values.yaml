@@ -127,11 +127,13 @@ prometheus-postgres-exporter:
         custom_metrics.yaml: |
           metrics:
             - name: test_metric
-              query: "SELECT 1 AS value"
+              query: "SELECT 'label1' AS label, 1 AS value"
               metrics:
                 - value:
                     usage: GAUGE
                     metric_name: test_metric
+                - label:
+                    usage: LABEL
             - name: pg_replication_slot
               query: |
                 select pid, client_addr, state, sync_state,
