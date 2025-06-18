@@ -128,7 +128,7 @@ rook-ceph-cluster:
               spec:
                 resources:
                   requests:
-                    storage: 10Gi
+                    storage: 60Gi
                 # IMPORTANT: Change the storage class depending on your environment
                 storageClassName: oci-bv
                 volumeMode: Block
