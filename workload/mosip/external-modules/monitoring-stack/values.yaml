@@ -198,7 +198,5 @@ prometheus-postgres-exporter:
                     usage: GAUGE
                 - queryid:
                     usage: LABEL
-                - query:
-                    usage: LABEL
               databases:
                 - appdb
