@@ -176,20 +176,15 @@ prometheus-postgres-exporter:
             - name: long_queries_avg_exec_time
               query: |
                 SELECT
-                    queryid,
-                    query,
-                    calls AS long_queries_calls,
-                    rows AS long_queries_rows,
-                    min_exec_time AS long_queries_min_exec_time,
-                    max_exec_time AS long_queries_max_exec_time,
-                    total_exec_time / calls AS long_queries_avg_exec_time
-                FROM
-                    pg_stat_statements
-                WHERE
-                    calls >= 100
-                ORDER BY
-                    long_queries_avg_exec_time DESC
-                LIMIT 10;
+                  queryid::text AS queryid,
+                  query,
+                  calls AS long_queries_calls,
+                  rows AS long_queries_rows,
+                  min_exec_time AS long_queries_min_exec_time,
+                  max_exec_time AS long_queries_max_exec_time,
+                  total_exec_time / NULLIF(calls, 0) AS long_queries_avg_exec_time
+                FROM pg_stat_statements
+                WHERE calls >= 100
               metrics:
                 - long_queries_calls:
                     usage: GAUGE
