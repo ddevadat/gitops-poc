@@ -171,3 +171,36 @@ prometheus-postgres-exporter:
                     usage: LABEL
                 - active:
                     usage: LABEL
+
+            - name: long_queries_avg_exec_time
+              query: |
+                SELECT
+                    queryid,
+                    query,
+                    calls AS long_queries_calls,
+                    rows AS long_queries_rows,
+                    min_exec_time AS long_queries_min_exec_time,
+                    max_exec_time AS long_queries_max_exec_time,
+                    total_exec_time / calls AS long_queries_avg_exec_time
+                FROM
+                    pg_stat_statements
+                WHERE
+                    calls >= 100
+                ORDER BY
+                    long_queries_avg_exec_time DESC
+                LIMIT 10;
+              metrics:
+                - long_queries_calls:
+                    usage: GAUGE
+                - long_queries_rows:
+                    usage: GAUGE
+                - long_queries_min_exec_time:
+                    usage: GAUGE
+                - long_queries_max_exec_time:
+                    usage: GAUGE
+                - long_queries_avg_exec_time:
+                    usage: GAUGE
+                - queryid:
+                    usage: LABEL
+                - query:
+                    usage: LABEL
