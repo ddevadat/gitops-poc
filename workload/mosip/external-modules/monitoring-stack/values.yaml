@@ -126,14 +126,17 @@ prometheus-postgres-exporter:
       data:
         custom_metrics.yaml: |
           metrics:
-            - name: test_metric
-              query: "SELECT 'label1' AS label, 1 AS value"
+            - name: pg_database_size
+              query: |
+                SELECT pg_database.datname, pg_database_size(pg_database.datname) as bytes FROM pg_database;
               metrics:
-                - value:
-                    usage: GAUGE
-                    metric_name: test_metric
-                - label:
-                    usage: LABEL
+                - datname:
+                    usage: "LABEL"
+                    description: "Name of the database"
+                - bytes:
+                    usage: "GAUGE"
+                    description: "Disk space used by the database"
+
             - name: pg_replication_slot
               query: |
                 select pid, client_addr, state, sync_state,
