@@ -205,3 +205,5 @@ prometheus-postgres-exporter:
                     usage: LABEL
                 - query:
                     usage: LABEL
+              databases:
+                - appdb
