@@ -21,6 +21,8 @@ metadata:
 spec:
   controller: oci.oraclecloud.com/native-ingress-controller
   parameters:
+    scope: Namespace
+    namespace: native-ingress-controller-system
     apiGroup: ingress.oraclecloud.com
     kind: ingressclassparameters
     name: native-ic-params
