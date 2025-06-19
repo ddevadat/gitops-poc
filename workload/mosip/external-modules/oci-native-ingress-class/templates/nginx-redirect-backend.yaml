@@ -40,9 +40,11 @@ kind: Service
 metadata:
   name: http-redirect
 spec:
+  type: NodePort
   selector:
     app: http-redirect
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 32080
