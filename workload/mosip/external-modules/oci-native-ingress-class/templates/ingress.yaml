@@ -37,7 +37,7 @@ metadata:
   name: http-redirect-ingress
   annotations:
     kubernetes.io/ingress.class: native-ic-ingress-class
-    oci-native-ingress.oraclecloud.com/http-listener-port: 80
+    oci-native-ingress.oraclecloud.com/http-listener-port: "80"
 spec:
   rules:
     - host: {{ .Values.domain }} 
@@ -58,7 +58,7 @@ metadata:
   name: https-app-ingress
   annotations:
     kubernetes.io/ingress.class: native-ic-ingress-class
-    oci-native-ingress.oraclecloud.com/https-listener-port: 443
+    oci-native-ingress.oraclecloud.com/https-listener-port: "443"
 spec:
   tls:
     - hosts:
