@@ -29,3 +29,28 @@ spec:
     kind: ingressclassparameters
     name: native-ic-params
 
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: https-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: native-ic-ingress-class
+    oci-native-ingress.oraclecloud.com/https-listener-port: "443"
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.domain }} 
+      secretName: {{ .Values.domain_ssl_secret_name }} 
+  rules:
+    - host: {{ .Values.domain }} 
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-website
+                port:
+                  number: 443
