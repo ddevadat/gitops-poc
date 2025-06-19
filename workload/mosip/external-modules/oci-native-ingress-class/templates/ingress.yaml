@@ -38,6 +38,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: native-ic-ingress-class
     oci-native-ingress.oraclecloud.com/https-listener-port: "443"
+    oci-native-ingress.oraclecloud.com/backend-tls-enabled: "false"
 spec:
   tls:
     - hosts:
