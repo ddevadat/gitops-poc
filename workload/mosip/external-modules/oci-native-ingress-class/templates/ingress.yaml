@@ -51,6 +51,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: nginx-website.native-ingress-controller-system
+                name: nginx-website
                 port:
                   number: 80
