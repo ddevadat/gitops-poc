@@ -53,4 +53,4 @@ spec:
               service:
                 name: nginx-website.native-ingress-controller-system
                 port:
-                  number: 443
+                  number: 80

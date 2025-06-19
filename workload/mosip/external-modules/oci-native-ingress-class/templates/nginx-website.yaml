@@ -26,6 +26,6 @@ spec:
     app: nginx-website
   ports:
     - protocol: TCP
-      port: 443
+      port: 80
       targetPort: 80
       nodePort: 32443  # Optional: specify a port between 30000-32767, or remove to auto-assign
