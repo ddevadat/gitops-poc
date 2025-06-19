@@ -1,3 +1,9 @@
 compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
 subnet_id: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
 domain:  nginx.<path:ocivault#mosip_domain#latest | base64decode> 
+domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+
+
+ingress_class_annotations:
+  ingressclass.kubernetes.io/is-default-class: "true"
+  oci-native-ingress.oraclecloud.com/network-security-group-ids: <path:ocivault#mosip_public_lb_nsg_id#latest | base64decode>
