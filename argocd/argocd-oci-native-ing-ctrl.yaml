@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: igc-gitfile-appset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/ddevadat/gitops-poc.git
+        revision: HEAD
+        files:
+          - path: oci-native-ingress-controller-config/oci-native-igc-targets.yaml
+  template:
+    metadata:
+      name: '{{name}}'
+    spec:
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      source:
+        repoURL: https://github.com/oracle/oci-native-ingress-controller
+        targetRevision: HEAD
+        path: helm/oci-native-ingress-controller
+        plugin:
+          name: argocd-vault-plugin-helm
+          env:
+            - name: HELM_VALUES
+              value: |
+                compartment_id: "{{compartment_id}}"
+                subnet_id: "{{subnet_id}}"
+                cluster_id: "{{cluster_id}}"
+                authType: "{{auth_type}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
