@@ -24,3 +24,4 @@ spec:
     apiGroup: ingress.oraclecloud.com
     kind: ingressclassparameters
     name: native-ic-params
+
