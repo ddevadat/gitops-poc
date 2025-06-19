@@ -1,2 +1,3 @@
 compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
 subnet_id: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
+domain:  nginx.<path:ocivault#mosip_domain#latest | base64decode> 
