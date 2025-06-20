@@ -128,8 +128,7 @@ prometheus-postgres-exporter:
           name: postgres-exporter-extra
       data:
         custom_metrics.yaml: |
-          metrics:
-            - name: pg_database_size
+          pg_database_size:
               query: |
                 SELECT pg_database.datname, pg_database_size(pg_database.datname) as bytes FROM pg_database;
               metrics:
@@ -139,7 +138,7 @@ prometheus-postgres-exporter:
                 - bytes:
                     usage: "GAUGE"
                     description: "Disk space used by the database"
-            - name: oci_custom_replication_lag            
+          oci_custom_replication_lag:           
               query: |
                 SELECT
                   application_name,
@@ -156,7 +155,7 @@ prometheus-postgres-exporter:
                 - lag_mb:
                     usage: "GAUGE"
                     description: "Lag in Mb"
-            - name: pg_replication_slot
+          pg_replication_slot:
               query: |
                 select pid, client_addr, state, sync_state,
                     pg_wal_lsn_diff(sent_lsn, write_lsn) as write_lsn_diff,
@@ -180,7 +179,7 @@ prometheus-postgres-exporter:
                     usage: "GAUGE"
                     description: "The replay lag in bytes"
                     metric_name: pg_stat_replication_replay_lsn_diff
-            - name: pg_replication_slot_lag_bytes
+          pg_replication_slot_lag_bytes:
               query: |
                 SELECT
                   slot_name,
@@ -202,7 +201,7 @@ prometheus-postgres-exporter:
                     usage: LABEL
                 - active:
                     usage: LABEL
-            - name: long_queries_avg_exec_time
+          long_queries_avg_exec_time:
               query: |
                 SELECT
                   queryid::text AS queryid,
