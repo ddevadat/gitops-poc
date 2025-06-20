@@ -181,28 +181,28 @@ prometheus-postgres-exporter:
           #           usage: "GAUGE"
           #           description: "The replay lag in bytes"
           #           metric_name: pg_stat_replication_replay_lsn_diff
-          pg_replication_slot_lag_bytes:
-              query: |
-                SELECT
-                  slot_name,
-                  slot_type,
-                  database,
-                  active,
-                  pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn) AS lag_bytes
-                FROM pg_replication_slots;
-              metrics:
-                - lag_bytes:
-                    usage: GAUGE
-                    description: "Replication lag in bytes"
-                    metric_name: pg_replication_slots_pg_wal_lsn_diff
-                - slot_name:
-                    usage: LABEL
-                - slot_type:
-                    usage: LABEL
-                - database:
-                    usage: LABEL
-                - active:
-                    usage: LABEL
+          # pg_replication_slot_lag_bytes:
+          #     query: |
+          #       SELECT
+          #         slot_name,
+          #         slot_type,
+          #         database,
+          #         active,
+          #         pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn) AS lag_bytes
+          #       FROM pg_replication_slots;
+          #     metrics:
+          #       - lag_bytes:
+          #           usage: GAUGE
+          #           description: "Replication lag in bytes"
+          #           metric_name: pg_replication_slots_pg_wal_lsn_diff
+          #       - slot_name:
+          #           usage: LABEL
+          #       - slot_type:
+          #           usage: LABEL
+          #       - database:
+          #           usage: LABEL
+          #       - active:
+          #           usage: LABEL
           # long_queries_avg_exec_time:
           #     query: |
           #       SELECT
