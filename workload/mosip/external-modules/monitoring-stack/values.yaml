@@ -155,74 +155,74 @@ prometheus-postgres-exporter:
                 - lag_mb:
                     usage: "GAUGE"
                     description: "Lag in Mb"
-          pg_replication_slot:
-              query: |
-                select pid, client_addr, state, sync_state,
-                    pg_wal_lsn_diff(sent_lsn, write_lsn) as write_lsn_diff,
-                    pg_wal_lsn_diff(sent_lsn, flush_lsn) as flush_lsn_diff,
-                    pg_wal_lsn_diff(sent_lsn, replay_lsn) as replay_lsn_diff
-                from pg_stat_replication;
-              metrics:
-                - pid:
-                    usage: "LABEL"
-                - client_addr:
-                    usage: "LABEL"
-                - write_lsn_diff:
-                    usage: "GAUGE"
-                    description: "The write lag in bytes"
-                    metric_name: pg_stat_replication_write_lsn_diff
-                - flush_lsn_diff:
-                    usage: "GAUGE"
-                    description: "The flush lag in bytes"
-                    metric_name: pg_stat_replication_flush_lsn_diff
-                - replay_lsn_diff:
-                    usage: "GAUGE"
-                    description: "The replay lag in bytes"
-                    metric_name: pg_stat_replication_replay_lsn_diff
-          pg_replication_slot_lag_bytes:
-              query: |
-                SELECT
-                  slot_name,
-                  slot_type,
-                  database,
-                  active,
-                  pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn) AS lag_bytes
-                FROM pg_replication_slots;
-              metrics:
-                - lag_bytes:
-                    usage: GAUGE
-                    description: "Replication lag in bytes"
-                    metric_name: pg_replication_slots_pg_wal_lsn_diff
-                - slot_name:
-                    usage: LABEL
-                - slot_type:
-                    usage: LABEL
-                - database:
-                    usage: LABEL
-                - active:
-                    usage: LABEL
-          long_queries_avg_exec_time:
-              query: |
-                SELECT
-                  queryid::text AS queryid,
-                  query,
-                  calls AS long_queries_calls,
-                  rows AS long_queries_rows,
-                  min_exec_time AS long_queries_min_exec_time,
-                  max_exec_time AS long_queries_max_exec_time,
-                  total_exec_time / NULLIF(calls, 0) AS long_queries_avg_exec_time
-                FROM pg_stat_statements
-                WHERE calls >= 100;
-              metrics:
-                - long_queries_calls:
-                    usage: GAUGE
-                - long_queries_rows:
-                    usage: GAUGE
-                - long_queries_min_exec_time:
-                    usage: GAUGE
-                - long_queries_max_exec_time:
-                    usage: GAUGE
-                - long_queries_avg_exec_time:
-                    usage: GAUGE
-                - queryid:
-                    usage: LABEL
+          # pg_replication_slot:
+          #     query: |
+          #       select pid, client_addr, state, sync_state,
+          #           pg_wal_lsn_diff(sent_lsn, write_lsn) as write_lsn_diff,
+          #           pg_wal_lsn_diff(sent_lsn, flush_lsn) as flush_lsn_diff,
+          #           pg_wal_lsn_diff(sent_lsn, replay_lsn) as replay_lsn_diff
+          #       from pg_stat_replication;
+          #     metrics:
+          #       - pid:
+          #           usage: "LABEL"
+          #       - client_addr:
+          #           usage: "LABEL"
+          #       - write_lsn_diff:
+          #           usage: "GAUGE"
+          #           description: "The write lag in bytes"
+          #           metric_name: pg_stat_replication_write_lsn_diff
+          #       - flush_lsn_diff:
+          #           usage: "GAUGE"
+          #           description: "The flush lag in bytes"
+          #           metric_name: pg_stat_replication_flush_lsn_diff
+          #       - replay_lsn_diff:
+          #           usage: "GAUGE"
+          #           description: "The replay lag in bytes"
+          #           metric_name: pg_stat_replication_replay_lsn_diff
+          # pg_replication_slot_lag_bytes:
+          #     query: |
+          #       SELECT
+          #         slot_name,
+          #         slot_type,
+          #         database,
+          #         active,
+          #         pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn) AS lag_bytes
+          #       FROM pg_replication_slots;
+          #     metrics:
+          #       - lag_bytes:
+          #           usage: GAUGE
+          #           description: "Replication lag in bytes"
+          #           metric_name: pg_replication_slots_pg_wal_lsn_diff
+          #       - slot_name:
+          #           usage: LABEL
+          #       - slot_type:
+          #           usage: LABEL
+          #       - database:
+          #           usage: LABEL
+          #       - active:
+          #           usage: LABEL
+          # long_queries_avg_exec_time:
+          #     query: |
+          #       SELECT
+          #         queryid::text AS queryid,
+          #         query,
+          #         calls AS long_queries_calls,
+          #         rows AS long_queries_rows,
+          #         min_exec_time AS long_queries_min_exec_time,
+          #         max_exec_time AS long_queries_max_exec_time,
+          #         total_exec_time / NULLIF(calls, 0) AS long_queries_avg_exec_time
+          #       FROM pg_stat_statements
+          #       WHERE calls >= 100;
+          #     metrics:
+          #       - long_queries_calls:
+          #           usage: GAUGE
+          #       - long_queries_rows:
+          #           usage: GAUGE
+          #       - long_queries_min_exec_time:
+          #           usage: GAUGE
+          #       - long_queries_max_exec_time:
+          #           usage: GAUGE
+          #       - long_queries_avg_exec_time:
+          #           usage: GAUGE
+          #       - queryid:
+          #           usage: LABEL
