@@ -138,6 +138,7 @@ prometheus-postgres-exporter:
                 - bytes:
                     usage: "GAUGE"
                     description: "Disk space used by the database"
+                    metric_name: "pg_database_size_mb"
           pg_oci_custom_replication_lag:           
               query: |
                 SELECT
@@ -155,6 +156,7 @@ prometheus-postgres-exporter:
                 - lag_mb:
                     usage: "GAUGE"
                     description: "Lag in Mb"
+                    metric_name: "oci_replication_lag_mb"
           # pg_replication_slot:
           #     query: |
           #       select pid, client_addr, state, sync_state,
