@@ -138,7 +138,7 @@ prometheus-postgres-exporter:
                 - bytes:
                     usage: "GAUGE"
                     description: "Disk space used by the database"
-          oci_custom_replication_lag:           
+          pg_oci_custom_replication_lag:           
               query: |
                 SELECT
                   application_name,
