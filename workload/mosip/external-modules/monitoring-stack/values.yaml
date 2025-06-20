@@ -159,7 +159,6 @@ prometheus-postgres-exporter:
                 - lagmb:
                     usage: "GAUGE"
                     description: "Lag in Mb"
-                    metric_name: "oci_replication_lag_mb"
           # pg_replication_slot:
           #     query: |
           #       select pid, client_addr, state, sync_state,
