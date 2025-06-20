@@ -150,15 +150,12 @@ prometheus-postgres-exporter:
               metrics:
                 - app_name:
                     usage: "LABEL"
-                    description: "Name of the application"
                 - client_ip:
                     usage: "LABEL"
-                    description: "Name of the client"
                 - pid:
                     usage: LABEL
                 - lagmb:
                     usage: "GAUGE"
-                    description: "Lag in Mb"
           # pg_replication_slot:
           #     query: |
           #       select pid, client_addr, state, sync_state,
