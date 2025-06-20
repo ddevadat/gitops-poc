@@ -144,6 +144,7 @@ prometheus-postgres-exporter:
                 SELECT
                   application_name as app_name,
                   client_addr as client_ip,
+                  pid,
                   pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) / 1024 / 1024 AS lagmb
                 FROM pg_stat_replication;
               metrics:
@@ -153,6 +154,8 @@ prometheus-postgres-exporter:
                 - client_ip:
                     usage: "LABEL"
                     description: "Name of the client"
+                - pid:
+                    usage: LABEL
                 - lagmb:
                     usage: "GAUGE"
                     description: "Lag in Mb"
