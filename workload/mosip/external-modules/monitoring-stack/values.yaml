@@ -103,11 +103,11 @@ prometheus-postgres-exporter:
     extraArgs:
       - "--auto-discover-databases"
   extraEnvs: 
-    # - name: PG_EXPORTER_CUSTOM_METRICS_PATH
+    # - name: PG_EXPORTER_CUSTOM_METRICS_PATH   ## this is not defined in any documenation
     #   value: /etc/config/custom_metrics.yaml
 
-    - name: PG_EXPORTER_EXTEND_QUERY_PATH
-      value: /etc/config/custom_metrics.yaml
+    # - name: PG_EXPORTER_EXTEND_QUERY_PATH    ## This shows a deprecated
+    #   value: /etc/config/custom_metrics.yaml
 
   extraVolumes:
     - name: custom-queries
