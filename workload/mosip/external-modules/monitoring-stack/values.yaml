@@ -102,7 +102,6 @@ prometheus-postgres-exporter:
 
     extraArgs:
       - "--auto-discover-databases"
-      - "--collector.xlog_location"
   extraEnvs: 
     # - name: PG_EXPORTER_CUSTOM_METRICS_PATH   ## this is not defined in any documenation
     #   value: /etc/config/custom_metrics.yaml
@@ -140,23 +139,21 @@ prometheus-postgres-exporter:
           #           usage: "GAUGE"
           #           description: "Disk space used by the database"
           #           metric_name: "pg_database_size_mb"
-          # pg_oci_replication:           
-          #     query: |
-          #       SELECT
-          #         application_name as app_name,
-          #         client_addr as client_ip,
-          #         pid,
-          #         pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) / 1024 / 1024 AS lagmb
-          #       FROM pg_stat_replication;
-          #     metrics:
-          #       - app_name:
-          #           usage: "LABEL"
-          #       - client_ip:
-          #           usage: "LABEL"
-          #       - pid:
-          #           usage: LABEL
-          #       - lagmb:
-          #           usage: "GAUGE"
+            pg_replication_lag_per_client:
+              query: |
+                SELECT
+                  application_name,
+                  client_addr,
+                  pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) / 1024 / 1024 AS lag_mb
+                FROM pg_stat_replication;
+              metrics:
+                - application_name:
+                    usage: "LABEL"
+                - client_addr:
+                    usage: "LABEL"
+                - lag_mb:
+                    usage: "GAUGE"
+                    description: "Replication lag in MB per client"
           # pg_replication_slot:
           #     query: |
           #       select pid, client_addr, state, sync_state,
