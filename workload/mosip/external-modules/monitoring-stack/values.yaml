@@ -139,24 +139,24 @@ prometheus-postgres-exporter:
           #           usage: "GAUGE"
           #           description: "Disk space used by the database"
           #           metric_name: "pg_database_size_mb"
-          # pg_oci_custom_replication_lag:           
-          #     query: |
-          #       SELECT
-          #         application_name as app_name,
-          #         client_addr as client_ip,
-          #         pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) / 1024 / 1024 AS lagmb
-          #       FROM pg_stat_replication;
-          #     metrics:
-          #       - app_name:
-          #           usage: "LABEL"
-          #           description: "Name of the application"
-          #       - client_ip:
-          #           usage: "LABEL"
-          #           description: "Name of the client"
-          #       - lagmb:
-          #           usage: "GAUGE"
-          #           description: "Lag in Mb"
-          #           metric_name: "oci_replication_lag_mb"
+          pg_oci_replication:           
+              query: |
+                SELECT
+                  application_name as app_name,
+                  client_addr as client_ip,
+                  pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) / 1024 / 1024 AS lagmb
+                FROM pg_stat_replication;
+              metrics:
+                - app_name:
+                    usage: "LABEL"
+                    description: "Name of the application"
+                - client_ip:
+                    usage: "LABEL"
+                    description: "Name of the client"
+                - lagmb:
+                    usage: "GAUGE"
+                    description: "Lag in Mb"
+                    metric_name: "oci_replication_lag_mb"
           # pg_replication_slot:
           #     query: |
           #       select pid, client_addr, state, sync_state,
