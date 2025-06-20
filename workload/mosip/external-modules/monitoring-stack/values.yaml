@@ -128,32 +128,32 @@ prometheus-postgres-exporter:
           name: postgres-exporter-extra
       data:
         custom_metrics.yaml: |
-          pg_database_size:
-              query: |
-                SELECT pg_database.datname, pg_database_size(pg_database.datname) as bytes FROM pg_database;
-              metrics:
-                - datname:
-                    usage: "LABEL"
-                    description: "Name of the database"
-                - bytes:
-                    usage: "GAUGE"
-                    description: "Disk space used by the database"
-                    metric_name: "pg_database_size_mb"
+          # pg_database_size:
+          #     query: |
+          #       SELECT pg_database.datname, pg_database_size(pg_database.datname) as bytes FROM pg_database;
+          #     metrics:
+          #       - datname:
+          #           usage: "LABEL"
+          #           description: "Name of the database"
+          #       - bytes:
+          #           usage: "GAUGE"
+          #           description: "Disk space used by the database"
+          #           metric_name: "pg_database_size_mb"
           pg_oci_custom_replication_lag:           
               query: |
                 SELECT
-                  application_name,
-                  client_addr,
-                  pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) / 1024 / 1024 AS lag_mb
+                  application_name as app_name,
+                  client_addr as client_ip,
+                  pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) / 1024 / 1024 AS lagmb
                 FROM pg_stat_replication;
               metrics:
-                - application_name:
+                - app_name:
                     usage: "LABEL"
                     description: "Name of the application"
-                - client_addr:
+                - client_ip:
                     usage: "LABEL"
                     description: "Name of the client"
-                - lag_mb:
+                - lagmb:
                     usage: "GAUGE"
                     description: "Lag in Mb"
                     metric_name: "oci_replication_lag_mb"
