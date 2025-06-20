@@ -100,8 +100,8 @@ prometheus-postgres-exporter:
       database: 'appdb'
       sslmode: require
 
-    # extraArgs:
-    #   - "--extend.query-path=/etc/config/queries.yaml"
+    extraArgs:
+      - "--auto-discover-databases"
   extraEnvs: 
     # - name: PG_EXPORTER_CUSTOM_METRICS_PATH
     #   value: /etc/config/custom_metrics.yaml
