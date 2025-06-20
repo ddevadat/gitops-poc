@@ -139,7 +139,6 @@ prometheus-postgres-exporter:
                 - bytes:
                     usage: "GAUGE"
                     description: "Disk space used by the database"
-
             - name: oci_custom_replication_lag            
               query: |
                 SELECT
@@ -157,7 +156,6 @@ prometheus-postgres-exporter:
                 - lag_mb:
                     usage: "GAUGE"
                     description: "Lag in Mb"
-
             - name: pg_replication_slot
               query: |
                 select pid, client_addr, state, sync_state,
@@ -204,7 +202,6 @@ prometheus-postgres-exporter:
                     usage: LABEL
                 - active:
                     usage: LABEL
-
             - name: long_queries_avg_exec_time
               query: |
                 SELECT
@@ -230,5 +227,3 @@ prometheus-postgres-exporter:
                     usage: GAUGE
                 - queryid:
                     usage: LABEL
-              databases:
-                - appdb
