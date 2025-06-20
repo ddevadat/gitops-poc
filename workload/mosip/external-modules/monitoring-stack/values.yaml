@@ -103,7 +103,10 @@ prometheus-postgres-exporter:
     # extraArgs:
     #   - "--extend.query-path=/etc/config/queries.yaml"
   extraEnvs: 
-    - name: PG_EXPORTER_CUSTOM_METRICS_PATH
+    # - name: PG_EXPORTER_CUSTOM_METRICS_PATH
+    #   value: /etc/config/custom_metrics.yaml
+
+    - name: PG_EXPORTER_EXTEND_QUERY_PATH
       value: /etc/config/custom_metrics.yaml
 
   extraVolumes:
