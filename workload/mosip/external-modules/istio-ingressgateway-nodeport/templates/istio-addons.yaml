@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gw-nodeport
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway-nodeport
+  servers:
+  - hosts:
+    - 'api.{{ .Values.ansibleenv.domain }}'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+---
