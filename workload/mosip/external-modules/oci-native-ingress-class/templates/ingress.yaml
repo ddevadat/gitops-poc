@@ -45,14 +45,24 @@ spec:
         - {{ .Values.domain }} 
       secretName: {{ .Values.domain_ssl_secret_name }} 
   rules:
+    # - host: {{ .Values.domain }} 
+    #   http:
+    #     paths:
+    #       - path: /
+    #         pathType: Prefix
+    #         backend:
+    #           service:
+    #             name: nginx-website
+    #             port:
+    #               number: 80
     - host: {{ .Values.domain }} 
       http:
         paths:
           - path: /
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
-                name: nginx-website
+                name: istio-ingressgateway-nodeport.istio-system
                 port:
                   number: 80
 
