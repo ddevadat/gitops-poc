@@ -12,12 +12,12 @@ external:
         argocd.argoproj.io/sync-wave: "-100"
         argocd.argoproj.io/manifest-generate-paths: .
 
-    - name: custom-app
-      path: workload/mosip/external-modules/nginx
-      namespace: native-ingress-controller-system
-      annotations:
-        argocd.argoproj.io/sync-wave: "-100"
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: custom-app
+    #   path: workload/mosip/external-modules/nginx
+    #   namespace: native-ingress-controller-system
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "-100"
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: istio-ingressgateway
     #   path: workload/mosip/external-modules/istio-ingressgateway
