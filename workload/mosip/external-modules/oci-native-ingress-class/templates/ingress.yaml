@@ -35,7 +35,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: https-app-ingress
-  namespace: istio-system
   annotations:
     kubernetes.io/ingress.class: native-ic-ingress-class
     oci-native-ingress.oraclecloud.com/https-listener-port: "443"
@@ -46,26 +45,26 @@ spec:
         - {{ .Values.domain }} 
       secretName: {{ .Values.domain_ssl_secret_name }} 
   rules:
-    # - host: {{ .Values.domain }} 
-    #   http:
-    #     paths:
-    #       - path: /
-    #         pathType: Prefix
-    #         backend:
-    #           service:
-    #             name: nginx-website
-    #             port:
-    #               number: 80
     - host: {{ .Values.domain }} 
       http:
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
-                name: istio-ingressgateway-nodeport
+                name: nginx-website
                 port:
                   number: 80
+    # - host: {{ .Values.domain }} 
+    #   http:
+    #     paths:
+    #       - path: /
+    #         pathType: ImplementationSpecific
+    #         backend:
+    #           service:
+    #             name: istio-ingressgateway-nodeport
+    #             port:
+    #               number: 80
 
 --- 
 
