@@ -1,0 +1,1 @@
+domain:  nginx.<path:ocivault#mosip_domain#latest | base64decode> 
