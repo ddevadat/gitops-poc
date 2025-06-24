@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: http-redirect-ingress
+  annotations:
+    kubernetes.io/ingress.class: native-ic-ingress-class
+    oci-native-ingress.oraclecloud.com/http-listener-port: "80"
+spec:
+  rules:
+    - host: {{ .Values.domain }} 
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: http-redirect
+                port:
+                  number: 80
