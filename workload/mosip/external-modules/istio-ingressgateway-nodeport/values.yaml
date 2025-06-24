@@ -4,7 +4,7 @@ ansibleenv:
 
 domain:  nginx.<path:ocivault#mosip_domain#latest | base64decode> 
 domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
-
+certificate_id: <path:ocivault#oci_certificate_id#latest | base64decode>
 
 gateway: 
   defaults:

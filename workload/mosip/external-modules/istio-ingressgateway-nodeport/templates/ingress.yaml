@@ -22,3 +22,28 @@
 #                 name: istio-ingressgateway-nodeport
 #                 port:
 #                   number: 80
+
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: https-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: native-ic-ingress-class
+    oci-native-ingress.oraclecloud.com/https-listener-port: "443"
+    oci-native-ingress.oraclecloud.com/backend-tls-enabled: "false"
+    oci-native-ingress.oraclecloud.com/certificate-ocid: {{ .Values.certificate_id }} 
+spec:
+  rules:
+    - host: {{ .Values.domain }} 
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: istio-ingressgateway-nodeport
+                port:
+                  number: 80
