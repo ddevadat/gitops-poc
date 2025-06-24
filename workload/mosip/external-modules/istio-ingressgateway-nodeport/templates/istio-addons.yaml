@@ -8,7 +8,7 @@ spec:
     istio: ingressgateway-nodeport
   servers:
   - hosts:
-    - 'api.{{ .Values.ansibleenv.domain }}'
+    - 'nginx.{{ .Values.ansibleenv.domain }}'
     port:
       name: http
       number: 80
