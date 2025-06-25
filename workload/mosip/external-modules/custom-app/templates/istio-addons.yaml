@@ -1,26 +1,51 @@
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: customapp-vs
+  name: http-redirect
 spec:
   hosts:
-    - "*"
+    - {{ .Values.domain }}
   gateways:
-  - customapp-gw
-
+    - customapp-gw
   http:
-  - match:
-      - uri:
-          prefix: /
-    route:
-    - destination:
-        host: helloworld
-        port:
-          number: 5000
-    headers:
-      request:
-        set:
-          x-forwarded-proto: https
+    - match:
+        - headers:
+            x-forwarded-proto:
+              exact: http
+      redirect:
+        uri: https://{{ .Values.domain }}
+        authority: {{ .Values.domain }}
+        redirectCode: 301
+    - route:
+        - destination:
+            host: helloworld
+            port:
+              number: 5000
+
+# --- 
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: customapp-vs
+# spec:
+#   hosts:
+#     - "*"
+#   gateways:
+#   - customapp-gw
+
+#   http:
+#   - match:
+#       - uri:
+#           prefix: /
+#     route:
+#     - destination:
+#         host: helloworld
+#         port:
+#           number: 5000
+#     headers:
+#       request:
+#         set:
+#           x-forwarded-proto: https
 
 ---
 
