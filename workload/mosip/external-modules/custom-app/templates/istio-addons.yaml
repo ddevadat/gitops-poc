@@ -13,7 +13,7 @@ spec:
             x-forwarded-proto:
               exact: http
       redirect:
-        uri: https://{{ .Values.domain }}
+        scheme: https
         authority: {{ .Values.domain }}
         redirectCode: 301
     - route:
