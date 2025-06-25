@@ -46,7 +46,7 @@ spec:
               service:
                 name: istio-ingressgateway-nodeport
                 port:
-                  number: 443
+                  number: 80
 
 --- 
 
