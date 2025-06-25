@@ -33,7 +33,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: native-ic-ingress-class
     oci-native-ingress.oraclecloud.com/https-listener-port: "443"
-    oci-native-ingress.oraclecloud.com/backend-tls-enabled: "true"
+    oci-native-ingress.oraclecloud.com/backend-tls-enabled: "false"
     oci-native-ingress.oraclecloud.com/certificate-ocid: {{ .Values.certificate_id }} 
 spec:
   rules:
@@ -46,7 +46,7 @@ spec:
               service:
                 name: istio-ingressgateway-nodeport
                 port:
-                  number: 443
+                  number: 80
 
 --- 
 
