@@ -115,12 +115,12 @@ external:
         argocd.argoproj.io/sync-wave: "-99"
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: oci-monitoring
-    #   path: workload/mosip/external-modules/oci-monitoring/oci-onm
-    #   namespace: oci-onm
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-99"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: oci-monitoring
+      path: workload/mosip/external-modules/oci-monitoring/oci-onm
+      namespace: oci-onm
+      annotations:
+        argocd.argoproj.io/sync-wave: "-99"
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: cloudnative-pg
     #   path: workload/mosip/external-modules/cloudnative-pg
