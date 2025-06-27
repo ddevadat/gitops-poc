@@ -46,7 +46,7 @@ oci-onm-logan:
 
 oci-onm-mgmt-agent:
   deployment: 
-    daemonSetDeployment: true
+    daemonSetDeployment: false
     daemonSet:
       # Provide the host path if Agent is deployed as DaemonSet. Management Agent Pod should have read-write access to it.
       # Note: The hostPath cannot point to /opt/oracle, please provide another location or create a sub-directory under /opt/oracle and use that as hostPath.
