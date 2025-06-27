@@ -45,6 +45,8 @@ oci-onm-logan:
   ociDomain:
 
 oci-onm-mgmt-agent:
+  deployment: 
+    daemonSetDeployment: true
   oci-onm-common:
     enabled: false
   namespace: "{{ .Values.global.namespace }}"
