@@ -116,7 +116,7 @@ external:
         argocd.argoproj.io/manifest-generate-paths: .
 
     - name: oci-monitoring
-      path: workload/mosip/external-modules/oci-monitoring/oci-nm
+      path: workload/mosip/external-modules/oci-monitoring/oci-onm
       namespace: oci-nm
       annotations:
         argocd.argoproj.io/sync-wave: "-99"
