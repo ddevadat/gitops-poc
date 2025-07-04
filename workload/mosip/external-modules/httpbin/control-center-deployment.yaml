@@ -16,33 +16,33 @@
 
 # --- 
 
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: control-center-deployment
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: control-center
-#   template:
-#     metadata:
-#       labels:
-#         app: control-center
-#     spec:
-#       nodeSelector:
-#         storage: rook
-#       tolerations:
-#         - key: "storage"
-#           operator: "Equal"
-#           value: "rook"
-#           effect: "NoSchedule"
-#       containers:
-#       - name: control-center
-#         image: <path:ocivault#control-center-image#latest | base64decode>
-#         imagePullPolicy: Always 
-#         command: ["sh", "-c"]
-#         args:
-#           - 'while true; do echo "Running"; sleep 360000; done'
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: control-center-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: control-center
+  template:
+    metadata:
+      labels:
+        app: control-center
+    spec:
+      nodeSelector:
+        storage: rook
+      tolerations:
+        - key: "storage"
+          operator: "Equal"
+          value: "rook"
+          effect: "NoSchedule"
+      containers:
+      - name: control-center
+        image: <path:ocivault#control-center-image#latest | base64decode>
+        imagePullPolicy: Always 
+        command: ["sh", "-c"]
+        args:
+          - 'while true; do echo "Running"; sleep 360000; done'
       # imagePullSecrets:
       #   - name: ocir 
