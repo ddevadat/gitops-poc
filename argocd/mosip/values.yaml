@@ -5,12 +5,12 @@ external:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
   components:
-    - name: oci-native-ingress-class
-      path: workload/mosip/external-modules/oci-native-ingress-class
-      namespace: native-ingress-controller-system
-      annotations:
-        argocd.argoproj.io/sync-wave: "-100"
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: oci-native-ingress-class
+    #   path: workload/mosip/external-modules/oci-native-ingress-class
+    #   namespace: native-ingress-controller-system
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "-100"
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: custom-app
     #   path: workload/mosip/external-modules/custom-app
@@ -33,21 +33,21 @@ external:
     #     argocd.argoproj.io/sync-wave: "-100"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
-    - name: istio-ingressgateway-nodeport
-      path: workload/mosip/external-modules/istio-ingressgateway-nodeport
-      namespace: istio-system
-      annotations:
-        argocd.argoproj.io/sync-wave: "-100"
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: istio-ingressgateway-nodeport
+    #   path: workload/mosip/external-modules/istio-ingressgateway-nodeport
+    #   namespace: istio-system
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "-100"
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
-    - name: httpbin
-      path: workload/mosip/external-modules/httpbin
-      namespace: httpbin
-      namespace_labels:
-        istio-injection: disabled
-      annotations:
-        argocd.argoproj.io/sync-wave: "-99"
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: httpbin
+    #   path: workload/mosip/external-modules/httpbin
+    #   namespace: httpbin
+    #   namespace_labels:
+    #     istio-injection: disabled
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "-99"
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: multicontainer
     #   path: workload/mosip/external-modules/multicontainer
