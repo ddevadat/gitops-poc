@@ -18,7 +18,7 @@ common:
   postgres_enabled: true
   istio_enabled: true
   keycloak_enabled: true
-  kafka_enabled: false
+  kafka_enabled: true
   configserver_enabled: false
   keymanager_enabled: false
   esignet_enabled: false
