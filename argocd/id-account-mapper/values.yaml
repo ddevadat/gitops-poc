@@ -20,7 +20,7 @@ common:
   keycloak_enabled: true
   kafka_enabled: true
   configserver_enabled: true
-  keymanager_enabled: false
+  keymanager_enabled: true
   esignet_enabled: false
   spar_enabled: false
   destination:
