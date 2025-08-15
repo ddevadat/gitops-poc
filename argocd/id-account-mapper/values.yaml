@@ -1,5 +1,5 @@
 softhsm:
-  enabled: false
+  enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -7,7 +7,7 @@ softhsm:
     targetRevision: 12.0.1-B2
 
 artifactory:
-  enabled: false
+  enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -15,8 +15,8 @@ artifactory:
     targetRevision: 12.0.1-B7
 
 common:
-  postgres_enabled: true
-  istio_enabled: true
+  postgres_enabled: false
+  istio_enabled: false
   keycloak_enabled: false
   kafka_enabled: false
   configserver_enabled: false
