@@ -497,6 +497,37 @@ prometheus-postgres-exporter:
           - idx_scan:
               usage: "COUNTER"
               description: "Number of index scans initiated on this index"
+      pg_locks:
+        query: |
+          SELECT 
+            l.locktype, 
+            l.relation::regclass AS relation,
+            l.mode, 
+            l.granted::int AS granted, 
+            l.pid,
+            a.queryid
+          FROM pg_locks l
+          JOIN pg_stat_activity a ON l.pid = a.pid;
+        metrics:
+          - locktype:
+              usage: "LABEL"
+              description: "Type of lock (e.g. relation, transactionid)"
+          - relation:
+              usage: "LABEL"
+              description: "Relation (table or index) on which the lock is held"
+          - mode:
+              usage: "LABEL"
+              description: "Lock mode (e.g. RowShareLock, ExclusiveLock)"
+          - pid:
+              usage: "LABEL"
+              description: "PID of the backend process holding or waiting for the lock"
+          - queryid:
+              usage: "LABEL"
+              description: "Hashed ID of the query holding/requesting the lock"
+          - granted:
+              usage: "GAUGE"
+              description: "Whether the lock is granted (1) or waiting (0)"
+
       # pg_stat_activity_idle:
       #   query: |
       #     WITH
