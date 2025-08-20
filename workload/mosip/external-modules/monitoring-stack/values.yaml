@@ -101,7 +101,7 @@ prometheus-postgres-exporter:
       sslmode: require
 
     extraArgs:
-      # - "--auto-discover-databases"
+      - "--auto-discover-databases"
       - "--collector.stat_statements"
   extraEnvs: 
     # - name: PG_EXPORTER_CUSTOM_METRICS_PATH   ## this is not defined in any documenation
