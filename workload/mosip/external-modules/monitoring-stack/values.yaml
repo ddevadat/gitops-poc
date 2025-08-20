@@ -102,7 +102,7 @@ prometheus-postgres-exporter:
 
     extraArgs:
       - "--auto-discover-databases"
-      - "--collector.stat_statements"
+      # - "--collector.stat_statements"  ## only for chart 6.10.2
   extraEnvs: 
     # - name: PG_EXPORTER_CUSTOM_METRICS_PATH   ## this is not defined in any documenation
     #   value: /etc/config/custom_metrics.yaml
