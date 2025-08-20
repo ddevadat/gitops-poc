@@ -504,8 +504,7 @@ prometheus-postgres-exporter:
             l.relation::regclass AS relation,
             l.mode, 
             l.granted::int AS granted, 
-            l.pid,
-            a.queryid
+            l.pid
           FROM pg_locks l
           JOIN pg_stat_activity a ON l.pid = a.pid;
         metrics:
@@ -521,9 +520,6 @@ prometheus-postgres-exporter:
           - pid:
               usage: "LABEL"
               description: "PID of the backend process holding or waiting for the lock"
-          - queryid:
-              usage: "LABEL"
-              description: "Hashed ID of the query holding/requesting the lock"
           - granted:
               usage: "GAUGE"
               description: "Whether the lock is granted (1) or waiting (0)"
