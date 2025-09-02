@@ -11,7 +11,7 @@ pmm_client:
     tag: "3"
     pullPolicy: IfNotPresent
   pmm:
-    serverAddress: "https://pmm.<path:ocivault#mosip_domain#latest | base64decode>"
+    serverAddress: "pmm.<path:ocivault#mosip_domain#latest | base64decode>"
     insecureTLS: "0"
     setup: "1"
     setupForce: "1"
