@@ -4,6 +4,27 @@ prometheus_domain: prom.<path:ocivault#mosip_domain#latest | base64decode>
 pmm_domain: pmm.<path:ocivault#mosip_domain#latest | base64decode>
 pmm_admin_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
 
+pmm_client:
+  replicaCount: 1
+  image:
+    repository: percona/pmm-client
+    tag: "3"
+    pullPolicy: IfNotPresent
+  pmm:
+    serverAddress: "monitoring-service:80"
+    insecureTLS: "1"
+    setup: "1"
+    setupForce: "1"
+    configFile: "/etc/pmm/config/pmm-agent.yaml"
+  secret:
+    username: "admin"
+    password: <path:ocivault#mosip_pg_password#latest | base64decode>
+  pvc:
+    storageClassName: "longhorn"
+    size: 1Gi
+
+
+
 pmm: 
   secret:
     name: pmm-secret
