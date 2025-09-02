@@ -15,7 +15,7 @@ pmm_client:
     insecureTLS: "1"
     setup: "1"
     setupForce: "1"
-    configFile: "/etc/pmm/config/pmm-agent.yaml"
+    configFile: "config/pmm-agent.yaml"
   secret:
     username: "admin"
     password: <path:ocivault#mosip_pg_password#latest | base64decode>
