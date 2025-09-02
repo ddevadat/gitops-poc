@@ -11,8 +11,8 @@ pmm_client:
     tag: "3"
     pullPolicy: IfNotPresent
   pmm:
-    serverAddress: "pmm.<path:ocivault#mosip_domain#latest | base64decode>"
-    insecureTLS: "0"
+    serverAddress: "monitoring-service:443"
+    insecureTLS: "1"
     setup: "1"
     setupForce: "1"
     configFile: "config/pmm-agent.yaml"
