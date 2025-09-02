@@ -12,6 +12,8 @@ spec:
       labels:
         app: pmm-client
     spec:
+      securityContext:
+        fsGroup: 1002 
       containers:
         - name: pmm-client
           image: "{{ .Values.pmm_client.image.repository }}:{{ .Values.pmm_client.image.tag }}"
