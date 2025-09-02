@@ -1,31 +1,31 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: pmm-client
-# spec:
-#   replicas: {{ .Values.pmm_client.replicaCount }}
-#   selector:
-#     matchLabels:
-#       app: pmm-client
-#   template:
-#     metadata:
-#       labels:
-#         app: pmm-client
-#     spec:
-#       containers:
-#         - name: pmm-client
-#           image: "{{ .Values.pmm_client.image.repository }}:{{ .Values.pmm_client.image.tag }}"
-#           imagePullPolicy: {{ .Values.pmm_client.image.pullPolicy }}
-#           envFrom:
-#             - configMapRef:
-#                 name: pmm-client-config
-#             - secretRef:
-#                 name: pmm-client-secret
-#           volumeMounts:
-#             - name: pmm-client-storage
-#               mountPath: /usr/local/percona/pmm/tmp
-#       volumes:
-#         - name: pmm-client-storage
-#           persistentVolumeClaim:
-#             claimName: pmm-client-pvc
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pmm-client
+spec:
+  replicas: {{ .Values.pmm_client.replicaCount }}
+  selector:
+    matchLabels:
+      app: pmm-client
+  template:
+    metadata:
+      labels:
+        app: pmm-client
+    spec:
+      containers:
+        - name: pmm-client
+          image: "{{ .Values.pmm_client.image.repository }}:{{ .Values.pmm_client.image.tag }}"
+          imagePullPolicy: {{ .Values.pmm_client.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: pmm-client-config
+            - secretRef:
+                name: pmm-client-secret
+          volumeMounts:
+            - name: pmm-client-storage
+              mountPath: /usr/local/percona/pmm/tmp
+      volumes:
+        - name: pmm-client-storage
+          persistentVolumeClaim:
+            claimName: pmm-client-pvc
 
