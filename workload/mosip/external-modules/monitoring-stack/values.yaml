@@ -1,6 +1,18 @@
 monitoring_stack_istio_enabled: true
 grafana_domain: grafana.<path:ocivault#mosip_domain#latest | base64decode>
 prometheus_domain: prom.<path:ocivault#mosip_domain#latest | base64decode>
+pmm_admin_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
+
+pmm: 
+  secret:
+    name: pmm-secret
+    create: false
+  service:
+    type: ClusterIP
+  storage:
+    storageClassName: "ceph-block"
+    size: 1Gi
+
 
 kube-prometheus-stack:
   prometheus:
