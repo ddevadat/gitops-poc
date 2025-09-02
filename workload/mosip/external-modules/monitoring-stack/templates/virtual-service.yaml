@@ -43,5 +43,25 @@ spec:
 #         set:
 #           x-forwarded-proto: https
 
+--- 
 
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pmm-ui
+spec:
+  hosts:
+  - "{{ .Values.pmm_domain }}"
+  gateways:
+    - istio-system/all-hosts
+  http:
+  - route:
+    - destination:
+        host: monitoring-service
+        port:
+          number: 80
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
 {{- end }}
