@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: pmm-client
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.pmm_client.image.repository }}:{{ .Values.pmm_client.image.tag }}"
+          imagePullPolicy: {{ .Values.pmm_client.image.pullPolicy }}
           envFrom:
             - configMapRef:
                 name: pmm-client-config
