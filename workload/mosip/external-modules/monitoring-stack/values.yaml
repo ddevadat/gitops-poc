@@ -11,7 +11,7 @@ pmm_client:
     tag: "3"
     pullPolicy: IfNotPresent
   pmm:
-    serverAddress: "monitoring-service:80"
+    serverAddress: "monitoring-service:443"
     insecureTLS: "1"
     setup: "1"
     setupForce: "1"
