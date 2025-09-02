@@ -1,11 +1,11 @@
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: pmm-client-pvc
-# spec:
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: {{ .Values.pmm_client.pvc.size }}
-#   storageClassName: {{ .Values.pmm_client.pvc.storageClassName }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pmm-client-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.pmm_client.pvc.size }}
+  storageClassName: {{ .Values.pmm_client.pvc.storageClassName }}
