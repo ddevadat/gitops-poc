@@ -6,5 +6,6 @@ data:
   PMM_AGENT_SERVER_ADDRESS: {{ .Values.pmm_client.pmm.serverAddress | quote }}
   PMM_AGENT_SERVER_INSECURE_TLS: {{ .Values.pmm_client.pmm.insecureTLS | quote }}
   PMM_AGENT_SETUP: {{ .Values.pmm_client.pmm.setup | quote }}
+  PMM_AGENT_SETUP_MACHINE_ID: {{ .Values.pmm_client.client_name | quote }}
   PMM_AGENT_SETUP_FORCE: {{ .Values.pmm_client.pmm.setupForce | quote }}
   PMM_AGENT_CONFIG_FILE: {{ .Values.pmm_client.pmm.configFile | quote }}
