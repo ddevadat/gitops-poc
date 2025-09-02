@@ -20,7 +20,7 @@ pmm_client:
     username: "admin"
     password: <path:ocivault#mosip_pg_password#latest | base64decode>
   pvc:
-    storageClassName: "longhorn"
+    storageClassName: "ceph-block"
     size: 1Gi
 
 
