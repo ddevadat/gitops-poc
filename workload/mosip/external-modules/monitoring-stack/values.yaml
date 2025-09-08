@@ -6,7 +6,7 @@ pmm_admin_password: <path:ocivault#mosip_pg_password#latest | base64decode>
 
 pmm_client:
   client_name: pmm-client
-  replicaCount: 0
+  replicaCount: 1
   image:
     repository: percona/pmm-client
     tag: "3"
