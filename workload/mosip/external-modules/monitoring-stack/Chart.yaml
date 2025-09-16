@@ -33,5 +33,5 @@ dependencies:
   repository: https://prometheus-community.github.io/helm-charts
 
 - name: pmm
-  version: 1.4.7
+  version: 1.4.11
   repository: https://percona.github.io/percona-helm-charts
